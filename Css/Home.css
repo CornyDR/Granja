@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", serif;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+.header{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0px 10%;
+}
+
+.header .logo{
+    cursor: pointer;
+} 
+
+.header .logo .img{
+    height: 70px;
+    width: auto;
+    transform: all 0.3s;
+}
+
+.header .logo .img:hover{
+    transform: scale(1.1);
+
+}
+
+.header .nav-links{
+    list-style: none;
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 30px;
+}
+
+.header .nav-links li:hover{
+    transform: scale(1.1) ;
+}
+
+.header .nav-links a{
+    font-size: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.header .nav-links a:hover{
+    color: rgb(112, 233, 233);
+}
+
+.header .btm button{
+    font-weight: 700;
+    color: aquamarine;
+    padding: 9px 25px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.header .btm button:hover{
+    background-color: rgb(112, 233, 233);
+    color: black;
+    transform: scale(1.1);
+}
+
+.grafic{
+    width: 100%;
+    min-height: 400px;
+}
