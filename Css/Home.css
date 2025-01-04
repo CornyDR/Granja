@@ -8,7 +8,9 @@
 }
 
 body{
-    background-color: antiquewhite;
+    min-height: 100vh;
+    background: url(/img/background.jpg) no-repeat center center;
+    background-size: cover;
 }
 
 .header{
@@ -58,7 +60,13 @@ body{
     color: rgb(112, 233, 233);
 }
 
-.header .btm button{
+.menu{
+    display: none;
+}
+
+.header .btm button,
+.header .menu button{
+    margin-left: 20px;
     font-weight: 700;
     color: aquamarine;
     padding: 9px 25px;
@@ -67,13 +75,97 @@ body{
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-.header .btm button:hover{
+.header .btm button:hover,
+.header .menu button:hover{
     background-color: rgb(112, 233, 233);
     color: black;
     transform: scale(1.1);
 }
 
+@media screen and (max-width: 800px){
+    .nav-links, .btm{
+        display: none;
+    }
+
+    .menu	{
+        display: inherit;
+    }
+    
+}
+
+/* Nav */
+.header a	{
+    text-decoration: none;
+}
+
+.header .overlay	{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(85, 44, 44, 0.7);
+    overflow: hidden;
+    transition: all 0.3 ease 0s;
+}
+
+.header .overlay .overlay-content	{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.header .overlay a{
+    padding: 15px;
+    font-size: 30px;
+    display: block;
+    transition: all 0.3s ease 0s;
+    font-weight: 700;
+    color: rgb(101, 168, 245);
+}
+
+.header .overlay a:hover,
+.header .overlay a:focus	{
+    color: rgb(204, 190, 61);
+}
+
+.header .overlay .close	{
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px)	{
+    .header .overlay a	{
+        font-size: 20px;
+    }
+    .header .overlay .close	{
+        font-size: 40px;
+        top:15px;
+        right: 35px;
+    }
+}
+
+.card-container {
+    min-width: 10px;
+    min-height: 20px;
+    border: 3px solid #fafafa10;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.glass.effect {
+    background: #f00808f3;
+    backdrop-filter: blur(0.4rem);    
+    -webkit-backdrop-filter: blur(0.4rem);
+}
+
 .grafic{
-    width: 100%;
+    width: 100px;
     min-height: 400px;
 }
