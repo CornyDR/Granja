@@ -1,171 +1,406 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Nunito", serif;
+/* =============== Global ============== */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
+:root {
+    --blu: #2a2185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
     min-height: 100vh;
-    background: url(/img/background.jpg) no-repeat center center;
-    background-size: cover;
+    overflow-x: hidden;
+
 }
 
-.header{
-    background-color: black;
+.logo{
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 15px;
+} 
+
+.logo img{
+    height: 40px;
+    width: 38px;
+    transition: all 0.3s;
+} 
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+/* =============== Navegacion ================ */
+.navegacion {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blu);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+}
+
+.navegacion.active {
+    width: 80px;
+}
+
+.navegacion ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navegacion ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navegacion ul li:hover,
+.navegacion ul li.hovered{
+    background-color: var(--white);
+
+}
+
+.navegacion ul li:nth-child(1){
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navegacion ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navegacion ul li:hover a,
+.navegacion ul li.hovered a{
+    color: var(--blu);
+}
+
+.navegacion ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.navegacion ul li a .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.navegacion ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 25px;
+    height: 60px;
+    line-height: 55px;
+    text-align:right;
+    white-space: nowrap;
+}
+
+.navegacion ul li a .title1 {
+    padding: 0 35px;
+    height: 60px;
+    line-height: 70px;
+
+}
+
+/* --------- Curva Navegacion ---------- */
+
+.navegacion ul li:hover a::before,
+.navegacion ul li.hovered a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navegacion ul li:hover a::after,
+.navegacion ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+    position: absolute;
+    top: 0;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    transition: 0.5s;
+    background-image: url('/img/Granja.jpg'); /* Cambia la ruta a la ubicación de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+}
+
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
     height: 60px;
-    padding: 0px 10%;
-}
-
-.header .logo{
-    cursor: pointer;
-} 
-
-.header .logo .img{
-    height: 70px;
-    width: auto;
-    transform: all 0.3s;
-}
-
-.header .logo .img:hover{
-    transform: scale(1.1);
-
-}
-
-.header .nav-links{
-    list-style: none;
-}
-
-.header .nav-links li{
-    display: inline-block;
-    padding: 0 30px;
-}
-
-.header .nav-links li:hover{
-    transform: scale(1.1) ;
-}
-
-.header .nav-links a{
-    font-size: 700;
-    color: white;
-    text-decoration: none;
-}
-
-.header .nav-links a:hover{
-    color: rgb(112, 233, 233);
-}
-
-.menu{
-    display: none;
-}
-
-.header .btm button,
-.header .menu button{
-    margin-left: 20px;
-    font-weight: 700;
-    color: aquamarine;
-    padding: 9px 25px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-.header .btm button:hover,
-.header .menu button:hover{
-    background-color: rgb(112, 233, 233);
-    color: black;
-    transform: scale(1.1);
-}
-
-@media screen and (max-width: 800px){
-    .nav-links, .btm{
-        display: none;
-    }
-
-    .menu	{
-        display: inherit;
-    }
-    
-}
-
-/* Nav */
-.header a	{
-    text-decoration: none;
-}
-
-.header .overlay	{
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    background-color: rgba(85, 44, 44, 0.7);
-    overflow: hidden;
-    transition: all 0.3 ease 0s;
-}
-
-.header .overlay .overlay-content	{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+.search label {
+    position: relative;
+    width: 100%;
+}
+
+.search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+  }
+  
+.search label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
+}
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+  
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    flex-direction: column;
+    object-fit: cover;
+}
+
+/* ======================= Tarjetas ====================== */
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 35px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+}
+  
+.cardBox .card {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+  
+.cardBox .card .cardName {
+    color: var(--blu);
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.cardBox .card .iconBx {
+    font-size: 3.5rem;
+    color: var(--black);
+}
+
+.cardBox .card:hover {
+    background: var(--blu);
+}
+
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+    color: var(--white);
+}
+
+/* .container {
+    display: flex;
     align-items: center;
     justify-content: center;
-
+    gap: 20px;
+    margin-top: 175px;
 }
 
-.header .overlay a{
-    padding: 15px;
-    font-size: 30px;
-    display: block;
-    transition: all 0.3s ease 0s;
-    font-weight: 700;
-    color: rgb(101, 168, 245);
-}
-
-.header .overlay a:hover,
-.header .overlay a:focus	{
-    color: rgb(204, 190, 61);
-}
-
-.header .overlay .close	{
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px)	{
-    .header .overlay a	{
-        font-size: 20px;
-    }
-    .header .overlay .close	{
-        font-size: 40px;
-        top:15px;
-        right: 35px;
-    }
-}
-
-.card-container {
-    min-width: 10px;
-    min-height: 20px;
-    border: 3px solid #fafafa10;
-    margin: 0 auto;
+.chart{
+    padding: 2rem;
+    border: 1px solid #aca908;
     border-radius: 1rem;
+    background: #361e49;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+} */
+
+
+
+
+.container {
+    display: flex; /* Cambiado a flex para alinear los gráficos uno al lado del otro */
+    align-items: flex-start; /* Alinea los gráficos en la parte superior */
+    justify-content: space-between; /* Espacio entre los gráficos */
+    gap: 20px; /* Espacio entre los gráficos */ /* Aumenta el margen superior para separar del contenedor de navegación */
+    padding: 0 45px;
+    margin-top: 0px;
+    padding-top: 80px;
+}
+.chart {
+    flex: 1 1 25%; /* Permite que los gráficos ocupen el mismo espacio y se ajusten a 100% en pantallas pequeñas */
+    padding: 2rem;
+    border: 1px solid #aca908;
+    border-radius: 1rem;
+    background: #361e49;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    width: 40%; /* Ajusta el ancho de los gráficos */
+    height: 300px;
 }
 
-.glass.effect {
-    background: #f00808f3;
-    backdrop-filter: blur(0.4rem);    
-    -webkit-backdrop-filter: blur(0.4rem);
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+    .navegacion {
+      left: -300px;
+    }
+    .navegacion.active {
+      width: 300px;
+      left: 0;
+    }
+    .main {
+      width: 100%;
+      left: 0;
+    }
+    .main.active {
+      left: 300px;
+    }
+    .cardBox {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* @media (max-width: 768px) {
+    .details {
+      grid-template-columns: 1fr;
+    }
+    .recentOrders {
+      overflow-x: auto;
+    }
+    .status.inProgress {
+      white-space: nowrap;
+    }
+  } */
+  
+  @media (max-width: 480px) {
+    .cardBox {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .cardHeader h2 {
+      font-size: 20px;
+    }
+    .user {
+      min-width: 40px;
+    }
+    .navegacion {
+      width: 100%;
+      left: -100%;
+      z-index: 1000;
+    }
+    .navegacion.active {
+      width: 100%;
+      left: 0;
+    }
+    .toggle {
+      z-index: 10001;
+    }
+    .main.active .toggle {
+      color: #fff;
+      position: fixed;
+      right: 0;
+      left: initial;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+        padding: 0 20px; /* Reduce el padding en pantallas más pequeñas */
+    }
+
+    .chart {
+        min-width: 100%; /* Los gráficos ocuparán el 100% del ancho en pantallas pequeñas */
+    }
 }
 
-.grafic{
-    width: 100px;
-    min-height: 400px;
+@media (max-width: 480px) {
+    .chart {
+        padding: 1rem; /* Reduce el padding en gráficos para pantallas más pequeñas */
+    }
 }

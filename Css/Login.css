@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(background0.jpeg) no-repeat;
+    background: url(/img/background0.jpeg) no-repeat;
     background-size: cover;
     background-position: center;
   }
@@ -46,7 +46,7 @@
     padding: 20px 45px 20px 20px;
   }
   .input-box input::placeholder{
-    color: #fff;
+    color: #000000;
   }
   .input-box i{
     position: absolute;
@@ -102,7 +102,3 @@
   .register-link p a:hover{
     text-decoration: underline;
   }
-
-  #EJeleeeeeeeeeeeeeeeeeeeeeeeeeeeee
-  #ASDASDASDASD
-  #ASDASD
