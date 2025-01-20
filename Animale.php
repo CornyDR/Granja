@@ -105,10 +105,7 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
             </div>
-            <div class="container" >
-
-                <header>
-        
+            <div class="container-nav" >
                     <div class="filterEntries">
                         <div class="entries">
                             Show <select name="" id="table_size">
@@ -124,36 +121,25 @@
                             <input type="search" name="" id="search" placeholder="Enter name/city/post">
                         </div>
                     </div>
-        
                     <div class="addMemberBtn">
                         <button>New member</button>
                     </div>
-        
-                </header>
-        
-        
                 <table>
-        
                     <thead>
                         <tr class="heading">
-                            <th>SL No</th>
-                            <th>Picture</th>
-                            <th>Full Name</th>
-                            <th>Age</th>
-                            <th>City</th>
-                            <th>Position</th>
-                            <th>Salary</th>
-                            <th>Start Date</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Action</th>
+                            <th>N Lote</th>
+                            <th>Cantidad Lote</th>
+                            <th>Animale</th>
+                            <th>Raza</th>
+                            <th>Fecha</th>
+
                         </tr>
                     </thead>
         
         
                     <tbody class="userInfo">
-                        <!-- <tr><td class="empty" colspan="11" align="center">No data available in table</td></tr> -->
-                        <!-- <tr>
+                         <tr><td class="empty" colspan="11" align="center">No data available in table</td></tr> -->
+                         <tr>
                             <td>1</td>
                             <td><img src="./img/pic1.png" alt="" width="40" height="40"></td>
                             <td>John Doe</td>
@@ -169,41 +155,7 @@
                                 <button><i class="fa-regular fa-pen-to-square"></i></button>
                                 <button><i class="fa-regular fa-trash-can"></i></button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td><img src="./img/pic1.png" alt="" width="40" height="40"></td>
-                            <td>John Doe</td>
-                            <td>30</td>
-                            <td>New York</td>
-                            <td>Front-End Developer</td>
-                            <td>$25000</td>
-                            <td>03-08-2010</td>
-                            <td>jhondoe.net111@gmail.com</td>
-                            <td>924157812</td>
-                            <td>
-                                <button><i class="fa-regular fa-eye"></i></button>
-                                <button><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button><i class="fa-regular fa-trash-can"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td><img src="./img/pic1.png" alt="" width="40" height="40"></td>
-                            <td>John Doe</td>
-                            <td>30</td>
-                            <td>New York</td>
-                            <td>Front-End Developer</td>
-                            <td>$25000</td>
-                            <td>03-08-2010</td>
-                            <td>jhondoe.net111@gmail.com</td>
-                            <td>924157812</td>
-                            <td>
-                                <button><i class="fa-regular fa-eye"></i></button>
-                                <button><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button><i class="fa-regular fa-trash-can"></i></button>
-                            </td>
-                        </tr>
+                        <!-- </tr>
                         <tr>
                             <td>1</td>
                             <td><img src="./img/pic1.png" alt="" width="40" height="40"></td>
@@ -229,13 +181,13 @@
                 <footer>
                     <span class="showEntries">Showing 1 to 10 of 50 entries</span>
                     <div class="pagination">
-                        <!-- <button>Prev</button>
+                         <button>Prev</button>
                         <button class="active">1</button>
                         <button>2</button>
                         <button>3</button>
                         <button>4</button>
                         <button>5</button>
-                        <button>Next</button> -->
+                        <button>Next</button> 
                     </div>
                 </footer>
             </div>
