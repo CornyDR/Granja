@@ -12,16 +12,10 @@ try {
     echo "Conexión exitosa a Oracle";
 
     // Consulta de ejemplo
-    $sql = "SELECT * FROM Animales";
+    $sql = "SELECT ADMIN";
     $stmt = $pdo->query($sql);
 
-    // Mostrar resultados
-    echo "<table border='1'>";
-    echo "<tr><th>ID</th><th>Nombre</th><th>Especie</th></tr>";
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tr><td>" . $row['ID_ANIMAL'] . "</td><td>" . $row['NOMBRE'] . "</td><td>" . $row['ESPECIE'] . "</td></tr>";
-    }
-    echo "</table>";
+   
 
 } catch (PDOException $e) {
     echo "Error al conectar a Oracle: " . $e->getMessage();
