@@ -2,9 +2,9 @@
 
 
 :root{
-    --dark1: #0000004d;
+    --dark1: #bec92b4d;
     --dark2: #181c20;
-    --dark3: #212529;
+    --dark3: #744c02ad;
     --dark4: #2d3135;
     --dark5: #424549;
     --dark6: #404346;
@@ -14,39 +14,33 @@
     --red1: #902e31;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+/* ========= Tabla ========= */
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    background: linear-gradient(var(--red1) 50%, var(--dark2) 50%);
-}
-
-
-.container{
-    padding: 20px;
+.container-nav{
+    top: 0;
+    padding: 50px;
     box-shadow: 3px 3px 20px var(--dark1);
     background: var(--dark3);
     border-radius: 10px;
-    margin: 10px;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-right: 20px;
+    width: calc(100% - 100px); /* Ajusta el ancho según sea necesario */
+    max-width: 1200px; /* Establece un ancho máximo si es necesario */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto;
 }
 
-.container header .filterEntries{
+.container-nav header .filterEntries{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
 .filterEntries .entries{
+    flex: 1; /* Permite que los elementos se expandan */
+    margin-right: 10px; 
     color: var(--dark8);
 }
 
@@ -81,7 +75,7 @@ body{
     border-color: var(--dark7);
 }
 
-.container header .addMemberBtn {
+.container-nav header .addMemberBtn {
     margin-bottom: 15px;
 }
 
@@ -103,7 +97,8 @@ header .addMemberBtn button, .popup header .closeBtn, .popup footer .submitBtn{
 }
 
 
-.container table{
+.container-nav table{
+    width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
@@ -123,10 +118,11 @@ table tr th, table tr td{
     padding:3px 15px;
     color: var(--dark8);
     vertical-align: middle;
+    text-align: center;
 }
 
 table tr th{
-    padding: 12px 15px;
+    padding: 15px 0px;
 }
 
 table tr td:nth-child(1), table tr td:nth-child(2){
@@ -174,7 +170,7 @@ table td button{
     border: 1px solid var(--dark7);
 }
 
-.container footer{
+.container-nav footer{
     margin-top: 25px;
     font-size: 16px;
     display: flex;
@@ -182,7 +178,7 @@ table td button{
     align-items: center;
 }
 
-.container footer span{
+.container-nav footer span{
     color: var(--dark8);
 }
 
@@ -349,25 +345,25 @@ table tr .empty{
     height: 100%;
 }
 
-form .inputFieldContainer .nameField,
-form .inputFieldContainer .ageCityField,
-form .inputFieldContainer .postSalary{
+form .inputFieldcontainer-nav .nameField,
+form .inputFieldcontainer-nav .ageCityField,
+form .inputFieldcontainer-nav .postSalary{
     display: flex;
     justify-content: space-between;
     gap: 15px;
 }
 
-form .inputFieldContainer .nameField input,
-form .inputFieldContainer .ageCityField input,
-form .inputFieldContainer .postSalary input{
+form .inputFieldcontainer-nav .nameField input,
+form .inputFieldcontainer-nav .ageCityField input,
+form .inputFieldcontainer-nav .postSalary input{
     width: 200px;
 }
 
-.inputFieldContainer .form_control{
+.inputFieldcontainer-nav .form_control{
     margin: 10px 0;
 }
 
-.inputFieldContainer .form_control label{
+.inputFieldcontainer-nav .form_control label{
     display: block;
     color: var(--dark8);
     margin-bottom: 5px;
