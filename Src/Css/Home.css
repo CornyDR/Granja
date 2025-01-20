@@ -254,6 +254,10 @@ body {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
 }
+.iconBx a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del elemento padre */
+}
   
 .cardBox .card {
     position: relative;
@@ -263,7 +267,7 @@ body {
     display: flex;
     justify-content: space-between;
     cursor: pointer;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
 }
   
 .cardBox .card .cardName {
@@ -318,9 +322,9 @@ body {
 .chart {
     flex: 1 1 25%; /* Permite que los gráficos ocupen el mismo espacio y se ajusten a 100% en pantallas pequeñas */
     padding: 2rem;
-    border: 1px solid #aca908;
+    border: 1px solid #a19f0a73;
     border-radius: 1rem;
-    background: #361e49;
+    background: #7fa33cd0;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
     width: 40%; /* Ajusta el ancho de los gráficos */
     height: 300px;

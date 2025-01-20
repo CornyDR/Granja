@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/Css/Login.css">
+  <link rel="stylesheet" href="/Src/Css/Login.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <title>Granja Two</title>
+  <title>Los Santos</title>
 </head>
 <body>
   <div class="wrapper">
@@ -22,6 +22,24 @@
       <button type="submit" class="btn">Iniciar</button>
     </form>
   </div>
+
+  <?php
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Aquí deberías validar las credenciales del usuario
+    // Por ejemplo, podrías verificar en una base de datos
+
+    // Si las credenciales son correctas, redirige a home.php
+    if ($username == 'usuario_correcto' && $password == 'contraseña_correcta') {
+      header('Location: home.php');
+      exit();
+    } else {
+      echo '<p>Credenciales incorrectas</p>';
+    }
+  }
+  ?>
 
 </body>
 </html>
