@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Css/Home.css">
-    <link rel="stylesheet" href="/Css/Animales.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/Src/Css/Home.css">
+    <link rel="stylesheet" href="/Src/Css/Animales.css">
+    <title>Los Santos</title>
 </head>
 <body>
     <header>
@@ -23,7 +23,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="/Src/Home.php">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -32,7 +32,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="/Src/Animale.php">
                             <span class="icon">
                                 <ion-icon name="paw-outline"></ion-icon>      
                             </span>                     
@@ -283,6 +283,6 @@
             <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <!-- =========== Scripts =========  -->
-            <script src="Home.js"></script>
+            <script src="/Src/Js/Home.js"></script>
 </body>
 </html>

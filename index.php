@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/Css/Login.css">
+  <link rel="stylesheet" href="/Src/Css/Login.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <title>Granja Two</title>
+  <title>Los Santos</title>
 </head>
 <body>
   <div class="wrapper">
@@ -24,6 +24,7 @@
   </div>
 
   <?php
+<<<<<<< HEAD
   // Aquí puedes manejar la lógica de inicio de sesión
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       include 'conexion_bd.php'; // Include database connection
@@ -52,5 +53,24 @@
       }
   }
   ?>
+=======
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Aquí deberías validar las credenciales del usuario
+    // Por ejemplo, podrías verificar en una base de datos
+
+    // Si las credenciales son correctas, redirige a home.php
+    if ($username == 'usuario_correcto' && $password == 'contraseña_correcta') {
+      header('Location: home.php');
+      exit();
+    } else {
+      echo '<p>Credenciales incorrectas</p>';
+    }
+  }
+  ?>
+
+>>>>>>> dd8fe400f21c8e5d3a573aee90b69de117ceeb56
 </body>
 </html>
