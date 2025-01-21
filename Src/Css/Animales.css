@@ -16,6 +16,22 @@
 
 /* ========= Tabla ========= */
 
+select {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for better touch targets */
+    border: 1px solid #262a2e ; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    color: var(--dark8);
+    font-size: 16px; /* Font size */
+    background-color: #262a2e; /* Background color */
+    transition: border-color 0.3s; /* Transition for border color */
+}
+
+select:focus {
+    border-color: #ffffff; /* Border color on focus */
+    outline: none; /* Remove default outline */
+}
+
 .container-nav{
     top: 0;
     padding: 50px;
@@ -243,6 +259,10 @@ table tr .empty{
 
 /* Popup Form */
 
+label {
+    color: var(--dark8);
+}
+
 .dark_bg{
     position: fixed;
     top: 0;
@@ -382,7 +402,7 @@ form .inputFieldcontainer-nav .postSalary input{
 
 .form_control input:focus,
 .form_control input:valid{
-    border-color: var(--dark7);
+    border-color: var(--dark8);
 }
 
 input::-webkit-inner-spin-button,

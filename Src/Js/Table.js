@@ -43,8 +43,8 @@ showInfo()
 
 newMemberAddBtn.addEventListener('click', ()=> {
     isEdit = false
-    submitBtn.innerHTML = "Submit"
-    modalTitle.innerHTML = "Fill the Form"
+    submitBtn.innerHTML = "Registrar"
+    modalTitle.innerHTML = "Información Lote"
     popupFooter.style.display = "block"
     imgInput.src = "./img/pic1.png"
     darkBg.classList.add('active')
@@ -171,7 +171,7 @@ function showInfo(){
             </tr>`
 
                 userInfo.innerHTML += createElement
-                table.style.minWidth = "1400px"
+                table.style.minWidth = "1200px"
             }
         }
     }
@@ -179,7 +179,7 @@ function showInfo(){
 
     else{
         userInfo.innerHTML = `<tr class="employeeDetails"><td class="empty" colspan="11" align="center">No data available in table</td></tr>`
-        table.style.minWidth = "1400px"
+        table.style.minWidth = "1200px"
     }
 }
 
@@ -324,8 +324,8 @@ form.addEventListener('submit', (e)=> {
     getData = [...originalData]
     localStorage.setItem('userProfile', JSON.stringify(originalData))
 
-    submitBtn.innerHTML = "Submit"
-    modalTitle.innerHTML = "Fill the Form"
+    submitBtn.innerHTML = "Registrar"
+    modalTitle.innerHTML = "Información Lote"
 
     darkBg.classList.remove('active')
     popupForm.classList.remove('active')

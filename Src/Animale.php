@@ -85,7 +85,6 @@
                         </a>
                     </li>
     
-    
                     <li>
                         <a href="#">
                             <span class="icon">
@@ -95,7 +94,6 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         </div>
 
@@ -105,83 +103,57 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
             </div>
-            <div class="container-nav" >
-                    <div class="filterEntries">
-                        <div class="entries">
-                            Show <select name="" id="table_size">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select> entries
-                        </div>
-        
-                        <div class="filter">
-                            <label for="search">Search:</label>
-                            <input type="search" name="" id="search" placeholder="Enter name/city/post">
-                        </div>
+            <div class="container-nav">
+                <div class="filterEntries">
+                    <div class="filter">
+                        <label for="search">Buscar:</label>
+                        <input type="search" name="" id="search" placeholder="Fecha">
                     </div>
-                    <div class="addMemberBtn">
-                        <button>New member</button>
-                    </div>
+                </div>
+                <div class="addMemberBtn">
+                    <button id="newMemberBtn" style="margin-bottom: 30px;">Registrar</button>
+                </div>
                 <table>
                     <thead>
                         <tr class="heading">
                             <th>N Lote</th>
+                            <th>Nombre Lote</th>
                             <th>Cantidad Lote</th>
                             <th>Animale</th>
                             <th>Raza</th>
                             <th>Fecha</th>
-
                         </tr>
                     </thead>
-        
-        
                     <tbody class="userInfo">
-                         <tr><td class="empty" colspan="11" align="center">No data available in table</td></tr> -->
-                         <tr>
-                            <td>1</td>
-                            <td><img src="./img/pic1.png" alt="" width="40" height="40"></td>
-                            <td>John Doe</td>
-                            <td>30</td>
-                            <td>New York</td>
-                            <td>Front-End Developer</td>
-                            <td>$25000</td>
-                            <td>03-08-2010</td>
-                            <td>jhondoe.net111@gmail.com</td>
-                            <td>924157812</td>
-                            <td>
-                                <button><i class="fa-regular fa-eye"></i></button>
-                                <button><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button><i class="fa-regular fa-trash-can"></i></button>
-                            </td>
-                        <!-- </tr>
                         <tr>
                             <td>1</td>
-                            <td><img src="./img/pic1.png" alt="" width="40" height="40"></td>
+                            <td>20
+                                <!-- <select name="cantidad_lote">
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> -->
+                            </td>
                             <td>John Doe</td>
                             <td>30</td>
                             <td>New York</td>
-                            <td>Front-End Developer</td>
-                            <td>$25000</td>
-                            <td>03-08-2010</td>
-                            <td>jhondoe.net111@gmail.com</td>
-                            <td>924157812</td>
                             <td>
                                 <button><i class="fa-regular fa-eye"></i></button>
                                 <button><i class="fa-regular fa-pen-to-square"></i></button>
                                 <button><i class="fa-regular fa-trash-can"></i></button>
                             </td>
-                        </tr> -->
+                        </tr>
                     </tbody>
-        
                 </table>
         
-        
                 <footer>
-                    <span class="showEntries">Showing 1 to 10 of 50 entries</span>
                     <div class="pagination">
-                         <button>Prev</button>
+                        <button>Prev</button>
                         <button class="active">1</button>
                         <button>2</button>
                         <button>3</button>
@@ -191,20 +163,16 @@
                     </div>
                 </footer>
             </div>
-        
-        
-            <!--Popup Form-->
-        
-            <div class="dark_bg">
-        
+
+            <!-- Popup Form for Adding New Member -->
+            <div class="dark_bg" id="addMemberPopup">
                 <div class="popup">
-                     <header>
-                        <h2 class="modalTitle">Fill the Form</h2>
-                        <button class="closeBtn">&times;</button>
-                     </header>
-        
-                     <div class="body">
-                        <form action="#" id="myForm">
+                    <header>
+                        <h2 class="modalTitle">info</h2>
+                        <button class="closeBtn" onclick="closePopup('addMemberPopup')">&times;</button>
+                    </header>
+                    <div class="body">
+                        <form action="#" id="addMemberForm">
                             <div class="imgholder">
                                 <label for="uploadimg" class="upload">
                                     <input type="file" name="" id="uploadimg" class="picture">
@@ -212,77 +180,58 @@
                                 </label>
                                 <img src="./img/pic1.png" alt="" width="150" height="150" class="img">
                             </div>
-        
                             <div class="inputFieldContainer">
-        
                                 <div class="nameField">
                                     <div class="form_control">
-                                        <label for="fName">First Name:</label>
+                                        <label for="fName">Nombre Lote:</label>
                                         <input type="text" name="" id="fName" required>
                                     </div>
-        
-                                    <div class="form_control">
-                                        <label for="lName">Last Name:</label>
-                                        <input type="text" name="" id="lName" required>
-                                    </div>
                                 </div>
-        
-                                <div class="ageCityField">
-                                    <div class="form_control">
-                                        <label for="age">Age:</label>
-                                        <input type="number" name="" id="age" required>
-                                    </div>
-        
-                                    <div class="form_control">
-                                        <label for="city">City:</label>
-                                        <input type="text" name="" id="city" required>
-                                    </div>
-                                </div>
-        
                                 <div class="postSalary">
                                     <div class="form_control">
-                                        <label for="position">Position:</label>
-                                        <input type="text" name="" id="position" required>
+                                        <label for="position">
+                                            Cantidad Lote:
+                                        </label>
+                                            <select name="cantidad_lote">
+                                                <option value="10">10</option>
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                                <option value="30">30</option>
+                                                <option value="40">40</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
                                     </div>
-        
                                     <div class="form_control">
-                                        <label for="salary">Salary:</label>
-                                        <input type="text" name="" id="salary" required>
+                                        <label for="salary">Animal:</label>
+                                        <select name="">
+                                            <option value="Pollo">Pollo</option>
+                                            <option value="Borrego">Borrego</option>
+                                            <option value="Chivos">Chivos</option>
+                                        </select>
                                     </div>
                                 </div>
-        
                                 <div class="form_control">
-                                    <label for="sDate">Start Date:</label>
+                                    <label for="sDate">Fecha:</label>
                                     <input type="date" name="" id="sDate" required>
                                 </div>
-        
-                                <div class="form_control">
-                                    <label for="email">Email:</label>
-                                    <input type="email" name="" id="email" required>
-                                </div>
-        
-                                <div class="form_control">
-                                    <label for="phone">Phone:</label>
-                                    <input type="number" name="" id="phone" required>
-                                </div>
                             </div>
+                            <footer class="popupFooter">
+                                <button type="submit" class="submitBtn">Registrar</button>
+                            </footer>
                         </form>
-                     </div>
-        
-                     <footer class="popupFooter">
-                        <button form="myForm" class="submitBtn">Submit</button>
-                     </footer>
+                    </div>
                 </div>
-        
             </div>
-        
+
         </div>
-            
     </header>
-        <!-- ====== ionicons ======= -->
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <!-- =========== Scripts =========  -->
-            <script src="/Src/Js/Home.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- =========== Scripts =========  -->
+    <script src="/Src/Js/Home.js"></script>
+    <script src="/Src/Js/Table.js"></script>
 </body>
 </html>
