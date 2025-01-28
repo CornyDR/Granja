@@ -416,3 +416,112 @@ input::-webkit-outer-spin-button{
     opacity: 1;
     visibility: visible;
 }
+/* ========= Animaciones ========= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes highlight {
+    from {
+        background-color: var(--dark4);
+    }
+    to {
+        background-color: var(--dark5);
+    }
+}
+
+@keyframes buttonHover {
+    from {
+        background-color: var(--dark4);
+    }
+    to {
+        background-color: var(--dark5);
+    }
+}
+
+/* ========= Transiciones y animaciones aplicadas ========= */
+
+.container-nav {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.filterEntries .entries select,
+.filterEntries .filter input {
+    transition: 0.3s ease-in-out;
+}
+
+.filterEntries .entries select:hover,
+.filterEntries .filter input:focus {
+    animation: highlight 0.5s ease-in-out;
+}
+
+.addMemberBtn button:hover {
+    animation: buttonHover 0.3s forwards;
+}
+
+.popup {
+    animation: popIn 0.4s ease-in-out;
+}
+
+.popup header .closeBtn:hover,
+.popup footer .submitBtn:hover {
+    animation: buttonHover 0.3s forwards;
+}
+
+table tr:hover {
+    animation: highlight 0.3s ease-in-out;
+}
+
+footer .pagination button.active,
+footer .pagination button:hover {
+    animation: buttonHover 0.3s forwards;
+}
+
+.dark_bg {
+    animation: fadeIn 0.4s ease-in-out;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.active {
+    animation: popIn 0.4s ease-out;
+}
+
+/* Hover Effects */
+.imgholder:hover .upload {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+table .heading th:hover {
+    transition: background-color 0.3s ease-in-out;
+    animation: highlight 0.4s forwards;
+}
