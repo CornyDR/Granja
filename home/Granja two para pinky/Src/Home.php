@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Los Santos</title>
-    <link rel="stylesheet" href="/Src/Css/Home.css">
+    <link rel="stylesheet" href="/Css/Home.css">
 </head>
 <body>
     <header>
@@ -22,7 +22,7 @@
                     </li>
 
                     <li>
-                        <a href="/Src/Php/Home.php">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -31,7 +31,7 @@
                     </li>
 
                     <li>
-                        <a href="/Src/Php/Animale.php">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="paw-outline"></ion-icon>      
                             </span>                     
@@ -121,32 +121,23 @@
         <!-- ======================= Tarjetas ================== -->
         <div class="cardBox">
             <div class="card">
-                <div class="iconBx">
-                    <a href="/Animale.php">
-                        <div class="cardName">Animales</div>
-                    </a>
-                    
+                <div>
+                    <div class="cardName">Animales</div>
                 </div>
 
                 <div class="iconBx">
-                    <a href="/Animale.php">
-                        <ion-icon name="paw-outline"></ion-icon>
-                    </a>
+                    <ion-icon name="paw-outline"></ion-icon>
                 </div>
 
             </div>
 
             <div class="card">
-                <div class="iconBx">
-                    <a href="/Salud.php">
-                        <div class="cardName">Alimentos</div>
-                    </a>
+                <div>
+                    <div class="cardName">Alimentos</div>
                 </div>
 
                 <div class="iconBx">
-                    <a href="/">
-                        <ion-icon name="restaurant-outline"></ion-icon>
-                    </a>
+                    <ion-icon name="restaurant-outline"></ion-icon>
                 </div>
 
             </div>
@@ -169,9 +160,9 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
     <!-- =========== Scripts =========  -->
-        <script src="/Src/Js/Home.js"></script>
-        <script src="/Src/Js/prueba2.js"></script>
-        <script src="/Src/Js/prueba22.js"></script>
+        <script src="Home.js"></script>
+        <script src="/prueba2.js"></script>
+        <script src="/prueba22.js"></script>
 
 </body>
 </html>

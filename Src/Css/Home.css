@@ -322,9 +322,9 @@ body {
 .chart {
     flex: 1 1 25%; /* Permite que los gráficos ocupen el mismo espacio y se ajusten a 100% en pantallas pequeñas */
     padding: 2rem;
-    border: 1px solid #a19f0a73;
+    border: 2px solid #e2e05373;
     border-radius: 1rem;
-    background: #7fa33cd0;
+    background: #191d11d0;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
     width: 40%; /* Ajusta el ancho de los gráficos */
     height: 300px;

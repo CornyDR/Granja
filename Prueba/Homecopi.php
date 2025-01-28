@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Los Santos</title>
-    <link rel="stylesheet" href="/Src/Css/Home.css">
+    <link rel="stylesheet" href="/Prueba/Home.css">
 </head>
 <body>
     <header>
@@ -169,7 +169,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 
     <!-- =========== Scripts =========  -->
-        <script src="/Src/Js/Home.js"></script>
+        <script src="/Prueba/menuState.js"></script>
         <script src="/Src/Js/prueba2.js"></script>
         <script src="/Src/Js/prueba22.js"></script>
 

@@ -8,7 +8,7 @@
     <title>Los Santos</title>
 </head>
 <body>
-    <?php
+    <!-- <?php
     // Include database connection
     include 'conexion_bd.php';
 
@@ -38,7 +38,7 @@
             }
         }
     }
-    ?>
+    ?> -->
 
     <div class="wrapper">
         <form action="index.php" method="POST">

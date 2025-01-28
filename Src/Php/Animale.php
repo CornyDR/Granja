@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Src/Css/Home.css">
     <link rel="stylesheet" href="/Src/Css/Animales.css">
+
+
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
+    <script src="/Src/Js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
+
+    <!-- <link rel="stylesheet" href="/Src/Css/Animales.css"> -->
+
+
     <title>Los Santos</title>
 </head>
 <body>
@@ -23,7 +33,7 @@
                     </li>
 
                     <li>
-                        <a href="/Src/Home.php">
+                        <a href="/Src/Php/Home.php">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -32,7 +42,7 @@
                     </li>
 
                     <li>
-                        <a href="/Src/Animale.php">
+                        <a href="/Src/Php/Animale.php">
                             <span class="icon">
                                 <ion-icon name="paw-outline"></ion-icon>      
                             </span>                     
@@ -86,7 +96,7 @@
                     </li>
     
                     <li>
-                        <a href="#">
+                        <a href="/index.php">
                             <span class="icon">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
@@ -104,75 +114,77 @@
                 </div>
             </div>
             <div class="container-nav">
-                <div class="filterEntries">
-                    <div class="filter">
-                        <label for="search">Buscar:</label>
-                        <input type="search" name="" id="search" placeholder="Fecha">
-                    </div>
-                </div>
-                <div class="addMemberBtn">
-                    <button id="newMemberBtn" style="margin-bottom: 30px;">Registrar</button>
-                </div>
-                <table>
-                    <thead>
-                        <tr class="heading">
-                            <th>N Lote</th>
-                            <th>Nombre Lote</th>
-                            <th>Cantidad Lote</th>
-                            <th>Animale</th>
-                            <th>Raza</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody class="userInfo">
-                        <tr>
-                            <td>1</td>
-                            <td>20
-                                <!-- <select name="cantidad_lote">
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                    <option value="25">25</option>
-                                    <option value="30">30</option>
-                                    <option value="40">40</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> -->
-                            </td>
-                            <td>John Doe</td>
-                            <td>30</td>
-                            <td>New York</td>
-                            <td>
-                                <button><i class="fa-regular fa-eye"></i></button>
-                                <button><i class="fa-regular fa-pen-to-square"></i></button>
-                                <button><i class="fa-regular fa-trash-can"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-        
-                <footer>
-                    <div class="pagination">
-                        <button>Prev</button>
-                        <button class="active">1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>Next</button> 
-                    </div>
-                </footer>
+            <div class="addMemberBtn">
+                <button>Ingresar</button>
+            </div>
+            <table id="example" class=" hover row-border" style="width:90%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>Hope Fuentes</td>
+                    <td>Secretary</td>
+                    <td>San Francisco</td>
+                    <td>41</td>
+                    <td>2010-02-12</td>
+                    <td>$109,850</td>
+                </tr>
+                <tr>
+                    <td>Vivian Harrell</td>
+                    <td>Financial Controller</td>
+                    <td>San Francisco</td>
+                    <td>62</td>
+                    <td>2009-02-14</td>
+                    <td>$452,500</td>
+                </tr>
+                <tr>
+                    <td>Timothy Mooney</td>
+                    <td>Office Manager</td>
+                    <td>London</td>
+                    <td>37</td>
+                    <td>2008-12-11</td>
+                    <td>$136,200</td>
+                </tr>
+                <tr>
+                    <td>Jackson Bradshaw</td>
+                    <td>Director</td>
+                    <td>New York</td>
+                    <td>65</td>
+                    <td>2008-09-26</td>
+                    <td>$645,750</td>
+                </tr>
+
+                <tr>
+                    <td>Donna Snider</td>
+                    <td>Customer Support</td>
+                    <td>New York</td>
+                    <td>27</td>
+                    <td>2011-01-25</td>
+                    <td>$112,000</td>
+                </tr>
+                </tbody>
+            </table>
             </div>
 
-            <!-- Popup Form for Adding New Member -->
-            <div class="dark_bg" id="addMemberPopup">
+            <div class="dark_bg">
+        
                 <div class="popup">
-                    <header>
-                        <h2 class="modalTitle">info</h2>
-                        <button class="closeBtn" onclick="closePopup('addMemberPopup')">&times;</button>
-                    </header>
-                    <div class="body">
-                        <form action="#" id="addMemberForm">
+                     <header>
+                        <h2 class="modalTitle">Fill the Form</h2>
+                        <button class="closeBtn">&times;</button>
+                     </header>
+        
+                     <div class="body">
+                        <form action="#" id="myForm">
                             <div class="imgholder">
                                 <label for="uploadimg" class="upload">
                                     <input type="file" name="" id="uploadimg" class="picture">
@@ -180,58 +192,64 @@
                                 </label>
                                 <img src="./img/pic1.png" alt="" width="150" height="150" class="img">
                             </div>
+        
                             <div class="inputFieldContainer">
+        
                                 <div class="nameField">
                                     <div class="form_control">
-                                        <label for="fName">Nombre Lote:</label>
+                                        <label for="fName">Nombre del Lote:</label>
                                         <input type="text" name="" id="fName" required>
                                     </div>
-                                </div>
-                                <div class="postSalary">
+        
                                     <div class="form_control">
-                                        <label for="position">
-                                            Cantidad Lote:
-                                        </label>
-                                            <select name="cantidad_lote">
-                                                <option value="10">10</option>
-                                                <option value="15">15</option>
-                                                <option value="20">20</option>
-                                                <option value="25">25</option>
-                                                <option value="30">30</option>
-                                                <option value="40">40</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>
+                                        <label for="lName">Tipo de Animal:</label>
+                                        <select id="opciones" name="opciones" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="1">Pollos</option>
+                                            <option value="2">Borrego</option>
+                                            <option value="3">Chivo</option>
+                                        </select>
+                                        
                                     </div>
+                                </div>
+        
+                                <div class="ageCityField">
                                     <div class="form_control">
-                                        <label for="salary">Animal:</label>
-                                        <select name="">
-                                            <option value="Pollo">Pollo</option>
-                                            <option value="Borrego">Borrego</option>
-                                            <option value="Chivos">Chivos</option>
+                                        <label for="age">Raza:</label>
+                                        <select id="opciones" name="opciones" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                            <option value="3"></option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form_control">
-                                    <label for="sDate">Fecha:</label>
-                                    <input type="date" name="" id="sDate" required>
+        
+                                    <div class="form_control">
+                                        <label for="city">Fecha:</label>
+                                        <input type="date" name="" id="city" required>
+                                    </div>
                                 </div>
                             </div>
-                            <footer class="popupFooter">
-                                <button type="submit" class="submitBtn">Registrar</button>
-                            </footer>
                         </form>
-                    </div>
+                     </div>
+        
+                     <footer class="popupFooter">
+                        <button form="myForm" class="submitBtn">Registrar</button>
+                     </footer>
                 </div>
+        
             </div>
-
-        </div>
+                
+        </div>  
     </header>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- =========== Scripts =========  -->
     <script src="/Src/Js/Home.js"></script>
-    <script src="/Src/Js/Table.js"></script>
+    <script src="/Src/Js/DataTable.js"></script>
+    <script src="/Src/Js/regis.js"></script>
+     
+
 </body>
 </html>
