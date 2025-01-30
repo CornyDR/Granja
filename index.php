@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 session_start();
 
 // Configuración básica de conexión a Oracle
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_message = "Error: " . $e->getMessage();
     }
 }
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <?php
+    <!-- <?php
     // Include database connection
     include 'conexion_bd.php';
 
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-    ?>
+    ?> -->
 
     <div class="wrapper">
         <form action="index.php" method="POST">

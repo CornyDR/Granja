@@ -7,20 +7,16 @@
     <link rel="stylesheet" href="/Src/Css/Animales.css">
 
 
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="/Src/Js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-
-    <!-- <link rel="stylesheet" href="/Src/Css/Animales.css"> -->
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Los Santos</title>
 </head>
 <body>
     <header>
-        <!-- ====== Menu ====== -->
-         <div class="container">
+                <!-- ====== Menu ====== -->
+        <div class="container">
             <div class="navegacion">
                 <ul>
                     <li>
@@ -51,7 +47,7 @@
                     </li>
     
                     <li>
-                        <a href="/Src/Php/Inventario.php">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
@@ -108,13 +104,13 @@
             <div class="addMemberBtn">
                 <button>Ingresar</button>
             </div>
-            <table id="example" class=" hover row-border" style="width:100%">
+            <table id="example" class=" hover row-border" style="width:90%">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre del Lote</th>
-                    <th>Tipo de Animal</th>
-                    <th>Raza</th>
+                    <th>Categoria</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
@@ -164,7 +160,7 @@
         
                 <div class="popup">
                      <header>
-                        <h2 class="modalTitle">Rellena el Formulario</h2>
+                        <h2 class="modalTitle"></h2>
                         <button class="closeBtn">&times;</button>
                      </header>
         
@@ -174,17 +170,19 @@
         
                                 <div class="nameField">
                                     <div class="form_control">
-                                        <label>Nombre del Lote:</label>
-                                        <input type="text" name="" id="fName" required>
+                                    <label>Categoria:</label>
+                                        <select id="categoria" name="categoria" required onchange="updateP()">
+                                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="Farmacos">Farmacos</option>
+                                            <option value="Alimentos">Alimentos</option>
+                                            <option value="Herramientas">Herramientas</option>
+                                        </select>
                                     </div>
         
                                     <div class="form_control">
-                                        <label>Tipo de Animal:</label>
-                                        <select id="tipoAnimal" name="tipoAnimal" required onchange="updateRaza()">
+                                        <label>Producto:</label>
+                                        <select id="producto" name="producto" requireds>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <option value="pollos">Pollos</option>
-                                            <option value="borrego">Borrego</option>
-                                            <option value="chivo">Chivo</option>
                                         </select>
                                         
                                     </div>
@@ -192,7 +190,7 @@
         
                                 <div class="ageCityField">
                                     <div class="form_control">
-                                        <label>Raza:</label>
+                                        <label>Cantidad:</label>
                                         <select id="raza" name="raza" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
@@ -216,14 +214,14 @@
                 
         </div>  
     </header>
-    <!-- ====== ionicons ======= -->
+
+        <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- =========== Scripts =========  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- =========== Scripts =========  -->
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/DataTable.js"></script>
-    <script src="/Src/Js/regis.js"></script>
-     
-
+    <script src="/Src/Js/regisP.js"></script>
 </body>
 </html>

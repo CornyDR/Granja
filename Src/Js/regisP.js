@@ -10,37 +10,36 @@ submitBtn = document.querySelector('.submitBtn'),
   uploadimg = document.querySelector("#uploadimg");
 
 // Datos de ejemplo: razas por tipo de animal
-const razasPorAnimal = {
-    "pollos": ["Pollo Criollo", "Pollo de Engorde"],
-    "borrego": ["Borrego Pelibuey", "Borrego Dorper"],
-    "chivo": ["Chivo Boer", "Chivo Criollo"]
+const inventario = {
+    "Farmacos": ["A", "B"],
+    "Alimentos": ["C", "D"],
+    "Herramientas": ["F", "H"]
 };
 
-function updateRaza() {
-    const tipoAnimalSelect = document.getElementById("tipoAnimal");
-    const razaSelect = document.getElementById("raza");
-    const selectedAnimal = tipoAnimalSelect.value;
+function updateP() {
+    const categoria = document.getElementById("categoria");
+    const PSelect = document.getElementById("producto");
+    const selectedcategoria = categoria.value;
 
-    // Limpiar las opciones del select de razas
-    razaSelect.innerHTML = '<option value="" disabled selected>-- Selecciona una opción --</option>';
+    PSelect.innerHTML = '<option value="" disabled selected>-- Selecciona una opción --</option>';
 
-    if (selectedAnimal) {
-        // Habilitar el select de razas
-        razaSelect.disabled = false;
+    if (selectedcategoria) {
+        
+        PSelect.disabled = false;
 
-        // Obtener las razas del tipo de animal seleccionado
-        const razas = razasPorAnimal[selectedAnimal];
+        
+        const producto = inventario[selectedcategoria];
 
-        // Agregar las nuevas opciones al select de razas
-        razas.forEach(raza => {
+        
+        producto.forEach( producto => {
             const option = document.createElement("option");
-            option.value = raza;
-            option.textContent = raza;
-            razaSelect.appendChild(option);
+            option.value = producto;
+            option.textContent = producto;
+            PSelect.appendChild(option);
         });
     } else {
-        // Deshabilitar el select de razas si no hay selección
-        razaSelect.disabled = true;
+        
+        PSelect.disabled = true;
     }
 }
 

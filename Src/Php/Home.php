@@ -44,16 +44,7 @@
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
-                            <span class="title">Habitad</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="restaurant-outline"></ion-icon>
-                            </span>
-                            <span class="title">Alimentos</span>
+                            <span class="title">Inventario</span>
                         </a>
                     </li>
 
@@ -62,11 +53,11 @@
                             <span class="icon">
                                 <ion-icon name="pulse-outline"></ion-icon>
                             </span>
-                            <span class="title">Salud</span>
+                            <span class="title">Seguimiento</span>
                         </a>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="#">
                             <span class="icon">
                                 <ion-icon name="trending-up-outline"></ion-icon>                            
@@ -82,7 +73,7 @@
                             </span>
                             <span class="title">Ajustes</span>
                         </a>
-                    </li>
+                    </li> -->
     
     
                     <li>
@@ -106,16 +97,9 @@
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
 
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Buscar">
-                        <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
-
-            <div class="user">
+            <!-- <div class="user">
                 <ion-icon name="person-outline"></ion-icon>
-            </div>
+            </div> -->
         </div>
 
         <!-- ======================= Tarjetas ================== -->
