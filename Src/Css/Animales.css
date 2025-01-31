@@ -47,6 +47,33 @@ select:focus {
     margin-right: auto;
 }
 
+.uniBtn {
+    background-color: #4CAF50; /* Green */
+    border-radius: 10%;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.uniBtn1 {
+    background-color: red; /* Green */
+    border-radius: 10%;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .container-nav header .filterEntries{
     display: flex;
     justify-content: space-between;
@@ -109,7 +136,7 @@ header .addMemberBtn button, .popup header .closeBtn, .popup footer .submitBtn{
 }
 
 .addMemberBtn button:hover{
-    background: var(--dark5);
+    background: #636659;
 }
 
 
@@ -137,6 +164,10 @@ header .addMemberBtn button, .popup header .closeBtn, .popup footer .submitBtn{
 
 label {
     color: var(--dark8);
+}
+
+.modalTitle{
+    color: white;
 }
 
 .dark_bg{

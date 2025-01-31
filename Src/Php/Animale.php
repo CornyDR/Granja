@@ -120,6 +120,17 @@
                 </tr>
             </thead>
                 <tbody id="tableBody">
+                    <tr>
+                        <td>1</td>
+                        <td>Hope Fuentes</td>
+                        <td>Secretary</td>
+                        <td>San Francisco</td>
+                        <td>2010-02-12</td>
+                        <td>
+                            <button class="uniBtn">Editar</button>
+                            <button class="uniBtn1">Eliminar</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             </div>
@@ -128,7 +139,7 @@
         
                 <div class="popup">
                      <header>
-                        <h2 class="modalTitle">Rellena el Formulario</h2>
+                        <h2 class="modalTitle">Rellenar el Formulario</h2>
                         <button class="closeBtn">&times;</button>
                      </header>
         
