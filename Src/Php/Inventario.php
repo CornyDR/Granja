@@ -6,17 +6,16 @@
     <link rel="stylesheet" href="/Src/Css/Home.css">
     <link rel="stylesheet" href="/Src/Css/Animales.css">
 
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="/Src/Js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <title>Los Santos</title>
 </head>
 <body>
     <header>
-                <!-- ====== Menu ====== -->
-        <div class="container">
+        <!-- ====== Menu ====== -->
+         <div class="container">
             <div class="navegacion">
                 <ul>
                     <li>
@@ -47,7 +46,7 @@
                     </li>
     
                     <li>
-                        <a href="#">
+                        <a href="/Src/Php/Inventario.php">
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
@@ -104,7 +103,7 @@
             <div class="addMemberBtn">
                 <button>Ingresar</button>
             </div>
-            <table id="example" class=" hover row-border" style="width:90%">
+            <table id="example" class=" hover row-border" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -112,46 +111,10 @@
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Fecha</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-    
-                <tr>
-                    <td>1</td>
-                    <td>Hope Fuentes</td>
-                    <td>Secretary</td>
-                    <td>San Francisco</td>
-                    <td>2010-02-12</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Vivian Harrell</td>
-                    <td>Financial Controller</td>
-                    <td>San Francisco</td>
-                    <td>2009-02-14</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Timothy Mooney</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>2008-12-11</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jackson Bradshaw</td>
-                    <td>Director</td>
-                    <td>New York</td>
-                    <td>2008-09-26</td>
-                </tr>
-
-                <tr>
-                    <td>5</td>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>2011-01-25</td>
-                </tr>
+                <tbody id="tableBody">
                 </tbody>
             </table>
             </div>
@@ -160,7 +123,7 @@
         
                 <div class="popup">
                      <header>
-                        <h2 class="modalTitle"></h2>
+                        <h2 class="modalTitle">Ingresar Mercancia</h2>
                         <button class="closeBtn">&times;</button>
                      </header>
         
@@ -170,19 +133,17 @@
         
                                 <div class="nameField">
                                     <div class="form_control">
-                                    <label>Categoria:</label>
+                                        <label>Nombre del Producto:</label>
+                                        <input type="text" name="" id="fName" required>
+                                    </div>
+        
+                                    <div class="form_control">
+                                        <label>Categoria:</label>
                                         <select id="categoria" name="categoria" required onchange="updateP()">
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                             <option value="Farmacos">Farmacos</option>
                                             <option value="Alimentos">Alimentos</option>
                                             <option value="Herramientas">Herramientas</option>
-                                        </select>
-                                    </div>
-        
-                                    <div class="form_control">
-                                        <label>Producto:</label>
-                                        <select id="producto" name="producto" requireds>
-                                            <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
                                         
                                     </div>
@@ -190,8 +151,8 @@
         
                                 <div class="ageCityField">
                                     <div class="form_control">
-                                        <label>Cantidad:</label>
-                                        <select id="raza" name="raza" required>
+                                        <label>Producto:</label>
+                                        <select id="producto" name="producto" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
                                     </div>
@@ -214,14 +175,15 @@
                 
         </div>  
     </header>
-
-        <!-- ====== ionicons ======= -->
+    
+    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <!-- =========== Scripts =========  -->
+    <!-- =========== Scripts =========  -->
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/DataTable.js"></script>
-    <script src="/Src/Js/regisP.js"></script>
+    <script src="/Src/Js/regis.js"></script>
+     
+
 </body>
 </html>

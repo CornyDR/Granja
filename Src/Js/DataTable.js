@@ -25,3 +25,7 @@ new DataTable('#example', {
     },
     
 });
+
+
+
+  

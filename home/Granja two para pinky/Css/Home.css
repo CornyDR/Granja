@@ -35,7 +35,7 @@ body {
     transition: all 0.3s;
 } 
 
-.container {
+.contain {
     position: relative;
     width: 100%;
 }
@@ -287,7 +287,7 @@ body {
     color: var(--white);
 }
 
-/* .container {
+/* .contain {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -306,7 +306,7 @@ body {
 
 
 
-.container {
+.contain {
     display: flex; /* Cambiado a flex para alinear los gráficos uno al lado del otro */
     align-items: flex-start; /* Alinea los gráficos en la parte superior */
     justify-content: space-between; /* Espacio entre los gráficos */
@@ -390,7 +390,7 @@ body {
   }
 
   @media (max-width: 768px) {
-    .container {
+    .contain {
         padding: 0 20px; /* Reduce el padding en pantallas más pequeñas */
     }
 
