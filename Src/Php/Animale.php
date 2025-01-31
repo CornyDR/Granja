@@ -115,47 +115,11 @@
                     <th>Nombre del Lote</th>
                     <th>Tipo de Animal</th>
                     <th>Raza</th>
+                    <th>Etapa</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
-            <tbody>
-    
-                <tr>
-                    <td>1</td>
-                    <td>Hope Fuentes</td>
-                    <td>Secretary</td>
-                    <td>San Francisco</td>
-                    <td>2010-02-12</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Vivian Harrell</td>
-                    <td>Financial Controller</td>
-                    <td>San Francisco</td>
-                    <td>2009-02-14</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Timothy Mooney</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>2008-12-11</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Jackson Bradshaw</td>
-                    <td>Director</td>
-                    <td>New York</td>
-                    <td>2008-09-26</td>
-                </tr>
-
-                <tr>
-                    <td>5</td>
-                    <td>Donna Snider</td>
-                    <td>Customer Support</td>
-                    <td>New York</td>
-                    <td>2011-01-25</td>
-                </tr>
+                <tbody id="tableBody">
                 </tbody>
             </table>
             </div>
@@ -172,7 +136,7 @@
                         <form action="#" id="myForm">
                             <div class="inputFieldContainer">
         
-                                <div class="nameField">
+                                
                                     <div class="form_control">
                                         <label>Nombre del Lote:</label>
                                         <input type="text" name="" id="fName" required>
@@ -188,11 +152,21 @@
                                         </select>
                                         
                                     </div>
-                                </div>
-        
-                                <div class="ageCityField">
+                                    
+                                    
+                                    
                                     <div class="form_control">
                                         <label>Raza:</label>
+                                        <select id="raza" name="raza" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="Etapa">Crecimiento</option>
+                                            <option value="Etapa">Desarollo</option>
+                                            <option value="Etapa">Venta</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form_control">
+                                        <label>Etapa:</label>
                                         <select id="raza" name="raza" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
@@ -202,7 +176,7 @@
                                         <label>Fecha:</label>
                                         <input type="date" name="" id="fecha" required>
                                     </div>
-                                </div>
+                                
                             </div>
                         </form>
                      </div>
