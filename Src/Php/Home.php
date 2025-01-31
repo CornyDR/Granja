@@ -40,7 +40,7 @@
                     </li>
     
                     <li>
-                        <a href="#">
+                        <a href="/Src/Php/Inventario.php">
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
