@@ -156,6 +156,18 @@
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
                                     </div>
+                                    <div class="form_control d-flex align-items-center">
+                                        <label for="cantidad">Cantidad:</label>
+                                        <input type="number" id="cantidad" name="cantidad" required placeholder="Ingrese la cantidad">
+                                    </div>
+
+                                    <div class="form_control">
+                                        <label for="unidad">Unidad:</label>
+                                        <select id="unidad" name="unidad" required>
+                                            <option value="kg">Kilogramos (Kg)</option>
+                                            <option value="gm">Gramos (Gm)</option>
+                                        </select>
+                                    </div>
         
                                     <div class="form_control">
                                         <label>Fecha:</label>
