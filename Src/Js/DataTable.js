@@ -8,6 +8,7 @@ $(document).ready(function() {
             { data: 'ID_LOTE' },     // Columna ID
             { data: 'NOM_LOTE' },    // Nombre del Lote
             { data: 'TIPO_ANIMAL' }, // Tipo de Animal
+            { data: 'CANTIDAD' },     // Nombre del Animal
             { data: 'RAZAS' },       // Raza
             { data: 'ETAPA' },       // Etapa
             { data: 'FECHA' },       // Fecha
@@ -57,6 +58,7 @@ $(document).ready(function() {
         // Llenar formulario con datos
         $('#fName').val(rowData.NOM_LOTE);
         $('#tipoAnimal').val(rowData.TIPO_ANIMAL);
+        $('#cantidad').val(rowData.CANTIDAD);
         $('#raza').val(rowData.RAZAS);
         $('#etapa').val(rowData.ETAPA);
         $('#fecha').val(rowData.FECHA);
@@ -76,6 +78,7 @@ $(document).ready(function() {
                 editar_id: id,
                 nom_lote: $('#fName').val(),
                 tipo_animal: $('#tipoAnimal').val(),
+                cantidad: $('#cantidad').val(),
                 razas: $('#raza').val(),
                 etapa: $('#etapa').val(),
                 fecha: $('#fecha').val()
