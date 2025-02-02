@@ -101,7 +101,7 @@
             </div>
             <div class="container-nav">
             <div class="addMemberBtn">
-                <button>Ingresar</button>
+                <button onclick="openIngresar()">Ingresar</button>
             </div>
             <table id="example" class=" hover row-border" style="width:100%">
             <thead>
@@ -115,6 +115,15 @@
                 </tr>
             </thead>
                 <tbody id="tableBody">
+                    <td>1</td>
+                    <td>Hope Fuentes</td>
+                    <td>Secretary</td>
+                    <td>San Francisco</td>
+                    <td>2010-02-12</td>
+                    <td>
+                        <button class="uniBtn" onclick="openEditModal()">Editar</button>
+                        <button class="uniBtn1">Eliminar</button>
+                    </td>
                 </tbody>
             </table>
             </div>
@@ -124,7 +133,7 @@
                 <div class="popup">
                      <header>
                         <h2 class="modalTitle">Ingresar Mercancia</h2>
-                        <button class="closeBtn">&times;</button>
+                        <button class="closeBtn" onclick="closeBtn()">&times;</button>
                      </header>
         
                      <div class="body">
@@ -184,10 +193,66 @@
                 </div>
         
             </div>
+
+            <div class="dark_bg1" id="editModal">
+                <div class="popup1">
+                    <header>
+                        <h2 class="modalTitle1">Editar Mercancía</h2>
+                        <button class="closeBtn1" onclick="closeEditModal()">&times;</button>
+                    </header>
+
+                    <div class="body">
+                        <form id="editForm">
+                            <div class="inputFieldContainer">
+                                <div class="form_control">
+                                    <label>Nombre del Producto:</label>
+                                    <input type="text" id="editProductName" required>
+                                </div>
+
+                                <div class="form_control">
+                                    <label>Categoria:</label>
+                                    <select id="editCategoria" required>
+                                        <option value="" disabled selected>-- Selecciona una opción --</option>
+                                        <option value="Farmacos">Farmacos</option>
+                                        <option value="Alimentos">Alimentos</option>
+                                        <option value="Herramientas">Herramientas</option>
+                                    </select>
+                                </div>
+
+                                <div class="form_control">
+                                    <label>Cantidad:</label>
+                                    <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
+                                </div>
+
+                                <div class="form_control">
+                                        <label for="unidad">Unidad:</label>
+                                        <select id="unidad" name="unidad" required>
+                                            <option value="kg">Kilogramos (Kg)</option>
+                                            <option value="gm">Gramos (Gm)</option>
+                                        </select>
+                                    </div>
+
+                                <div class="form_control">
+                                    <label>Fecha:</label>
+                                    <input type="date" id="editFecha" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <footer class="popupFooter1">
+                        <button class="submitBtn1" onclick="saveChanges()">Guardar Cambios</button>
+                    </footer>
+                </div>
+            </div>
+
+
+            
+    </div>
                 
-        </div>  
+  
     </header>
-    
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

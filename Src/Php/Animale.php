@@ -73,23 +73,34 @@
                 </div>
             </div>
             <div class="container-nav">
-                <div class="addMemberBtn">
-                    <button>Ingresar</button>
-                </div>
-                <table id="example" class="hover row-border" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre del Lote</th>
-                            <th>Tipo de Animal</th>
-                            <th>Raza</th>
-                            <th>Etapa</th>
-                            <th>Cantidad</th>
-                            <th>Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
+            <div class="addMemberBtn">
+                <button>Ingresar</button>
+            </div>
+            <table id="example" class=" hover row-border" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre del Lote</th>
+                    <th>Tipo de Animal</th>
+                    <th>Raza</th>
+                    <th>Etapa</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <td>1</td>
+                        <td>Hope Fuentes</td>
+                        <td>Secretary</td>
+                        <td>San Francisco</td>
+                        <td>2010-02-12</td>
+                        <td>
+                            <button class="uniBtn">Editar</button>
+                            <button class="uniBtn1">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
             <div class="dark_bg">
                 <div class="popup">

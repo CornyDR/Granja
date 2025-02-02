@@ -1,76 +1,99 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const registrarBtn = document.getElementById("registrarBtn");
+var newMemberAddBtn = document.querySelector('.addMemberBtn'),
+darkBg = document.querySelector('.dark_bg'),
+popupForm = document.querySelector('.popup'),
+crossBtn = document.querySelector('.closeBtn'),
+submitBtn = document.querySelector('.submitBtn'),
+ modalTitle = document.querySelector('.modalTitle'),
+ popupFooter = document.querySelector('.popupFooter'),
+ form = document.querySelector('form'),
+ formInputFields = document.querySelectorAll('form input'),
+  uploadimg = document.querySelector("#uploadimg");
 
-    registrarBtn.addEventListener("click", function () {
-        const nombreLote = document.getElementById("nombreLote").value;
-        const tipoAnimal = document.getElementById("tipoAnimal").value;
-        const cantidad = document.getElementById("cantidad").value;
-        const raza = document.getElementById("raza").value;
-        const etapa = document.getElementById("etapa").value;
-        const fecha = document.getElementById("fecha").value;
-        
+// Datos de ejemplo: razas por tipo de animal
+const razasPorAnimal = {
+    "pollos": ["Pollo Criollo", "Pollo de Engorde"],
+    "borrego": ["Borrego Pelibuey", "Borrego Dorper"],
+    "chivo": ["Chivo Boer", "Chivo Criollo"]
+};
 
-        if (!nombreLote || !tipoAnimal ||!cantidad ||!raza || !etapa || !fecha  ) {
-            alert("Todos los campos son obligatorios");
-            return;
-        }
+function updateRaza() {
+    const tipoAnimalSelect = document.getElementById("tipoAnimal");
+    const razaSelect = document.getElementById("raza");
+    const selectedAnimal = tipoAnimalSelect.value;
 
-        // Enviar datos al servidor con AJAX
-        $.ajax({
-            url: "/Src/Php/insertar_animal.php",
-            type: "POST",
-            data: {
-                nombreLote: nombreLote,
-                tipoAnimal: tipoAnimal,
-                cantidad: cantidad,
-                raza: raza,
-                etapa: etapa,
-                fecha: fecha,
-                
-            },
-            success: function (response) {
-                alert("Registro exitoso");
-                agregarFilaTabla(nombreLote, tipoAnimal, cantidad, raza, etapa, fecha );
-                document.getElementById("myForm").reset();
-            },
-            error: function () {
-                alert("Error al registrar");
-            }
+    // Limpiar las opciones del select de razas
+    razaSelect.innerHTML = '<option value="" disabled selected>-- Selecciona una opción --</option>';
+
+    if (selectedAnimal) {
+        // Habilitar el select de razas
+        razaSelect.disabled = false;
+
+        // Obtener las razas del tipo de animal seleccionado
+        const razas = razasPorAnimal[selectedAnimal];
+
+        // Agregar las nuevas opciones al select de razas
+        razas.forEach(raza => {
+            const option = document.createElement("option");
+            option.value = raza;
+            option.textContent = raza;
+            razaSelect.appendChild(option);
         });
-    });
-
-    function agregarFilaTabla(nombreLote, tipoAnimal, cantidad, raza, etapa, fecha ) {
-        let table = $("#example").DataTable();
-        table.row.add([
-            table.rows().count() + 1,
-            nombreLote,
-            tipoAnimal,
-            cantidad,
-            raza,
-            etapa,
-            fecha
-            
-        ]).draw(false);
+    } else {
+        // Deshabilitar el select de razas si no hay selección
+        razaSelect.disabled = true;
     }
+}
 
-    document.getElementById("tipoAnimal").addEventListener("change", function () {
-        const etapaSelect = document.getElementById("etapa");
-        const tipoAnimal = this.value;
+const inventario = {
+    "Farmacos": ["A", "B"],
+    "Alimentos": ["C", "D"],
+    "Herramientas": ["F", "H"]
+};
 
-        const etapas = {
-            pollos: ["Cría", "Crecimiento", "Engorde"],
-            borrego: ["Lactante", "Crecimiento", "Adulto"],
-            chivo: ["Leche", "Desarrollo", "Engorde"]
-        };
+function updateP() {
+    const categoria = document.getElementById("categoria");
+    const PSelect = document.getElementById("producto");
+    const selectedcategoria = categoria.value;
 
-        etapaSelect.innerHTML = "<option value='' disabled selected>-- Selecciona una opción --</option>";
-        if (etapas[tipoAnimal]) {
-            etapas[tipoAnimal].forEach(etapa => {
-                let option = document.createElement("option");
-                option.value = etapa;
-                option.textContent = etapa;
-                etapaSelect.appendChild(option);
-            });
-        }
-    });
-});
+    PSelect.innerHTML = '<option value="" disabled selected>-- Selecciona una opción --</option>';
+
+    if (selectedcategoria) {
+        
+        PSelect.disabled = false;
+
+        
+        const producto = inventario[selectedcategoria];
+
+        
+        producto.forEach( producto => {
+            const option = document.createElement("option");
+            option.value = producto;
+            option.textContent = producto;
+            PSelect.appendChild(option);
+        });
+    } else {
+        
+        PSelect.disabled = true;
+    }
+}
+
+newMemberAddBtn.addEventListener('click', ()=> {
+    darkBg.classList.add('active')
+    popupForm.classList.add('active')
+})
+
+crossBtn.addEventListener('click', ()=>{
+    darkBg.classList.remove('active')
+    popupForm.classList.remove('active')
+    form.reset()
+})
+
+
+
+
+
+
+
+
+
+
