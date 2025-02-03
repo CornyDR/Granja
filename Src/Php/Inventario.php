@@ -55,7 +55,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="/Src/Php/seguimiento.php">
                             <span class="icon">
                                 <ion-icon name="pulse-outline"></ion-icon>
                             </span>
@@ -100,32 +100,33 @@
                 </div>
             </div>
             <div class="container-nav">
-            <div class="addMemberBtn">
-                <button onclick="openIngresar()">Ingresar</button>
-            </div>
-            <table id="example" class=" hover row-border" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Categoria</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Fecha</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-                <tbody id="tableBody">
-                    <td>1</td>
-                    <td>Hope Fuentes</td>
-                    <td>Secretary</td>
-                    <td>San Francisco</td>
-                    <td>2010-02-12</td>
-                    <td>
-                        <button class="uniBtn" onclick="openEditModal()">Editar</button>
-                        <button class="uniBtn1">Eliminar</button>
-                    </td>
-                </tbody>
-            </table>
+                <div class="addMemberBtn">
+                    <button onclick="openIngresar()">Ingresar</button>
+                </div>
+                <table id="example" class=" hover row-border" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Categoria</th>
+                        <th>Producto</th>
+                        <th>Cifra</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                    <tbody id="tableBody">
+                        <td>1</td>
+                        <td>Hope Fuentes</td>
+                        <td>Secretary</td>
+                        <td>San Francisco</td>
+                        <td>2010-02-12</td>
+                        <td>
+                            <button class="uniBtn" onclick="openEditModal()">Editar</button>
+                            <button class="uniBtn1">Eliminar</button>
+                        </td>
+                    </tbody>
+                </table>
             </div>
 
             <div class="dark_bg">
@@ -166,13 +167,15 @@
                                         </select>
                                     </div>
                                     <div class="form_control d-flex align-items-center">
-                                        <label for="cantidad">Cantidad:</label>
-                                        <input type="number" id="cantidad" name="cantidad" required placeholder="Ingrese la cantidad">
+                                        <label for="cantidad">Cifra:</label>
+                                        <input type="number" id="cifra" name="cifra" required placeholder="Ingrese la cantidad">
                                     </div>
 
                                     <div class="form_control">
-                                        <label for="unidad">Unidad:</label>
+                                        <label for="unidad">Cantidad:</label>
                                         <select id="unidad" name="unidad" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option> 
+                                            <option value="unidad">Unidad</option>
                                             <option value="kg">Kilogramos (Kg)</option>
                                             <option value="gm">Gramos (Gm)</option>
                                         </select>
@@ -220,13 +223,15 @@
                                 </div>
 
                                 <div class="form_control">
-                                    <label>Cantidad:</label>
+                                    <label>Cifra:</label>
                                     <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
                                 </div>
 
                                 <div class="form_control">
-                                        <label for="unidad">Unidad:</label>
+                                        <label for="unidad">Cantidad:</label>
                                         <select id="unidad" name="unidad" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="unidad">Unidad</option>
                                             <option value="kg">Kilogramos (Kg)</option>
                                             <option value="gm">Gramos (Gm)</option>
                                         </select>

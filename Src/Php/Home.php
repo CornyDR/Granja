@@ -49,7 +49,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="/Src/Php/seguimiento.php">
                             <span class="icon">
                                 <ion-icon name="pulse-outline"></ion-icon>
                             </span>
@@ -77,7 +77,7 @@
     
     
                     <li>
-                        <a href="#">
+                        <a href="/index.php">
                             <span class="icon">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
@@ -97,8 +97,13 @@
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
 
-            <!-- <div class="user">
-                <ion-icon name="person-outline"></ion-icon>
+            <!-- <div class="Exit">
+                <a href="/index.php">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Salir</span>
+                </a>
             </div> -->
         </div>
 
@@ -106,14 +111,14 @@
         <div class="cardBox">
             <div class="card">
                 <div class="iconBx">
-                    <a href="/Animale.php">
+                    <a href="/Src/Php/Animale.php">
                         <div class="cardName">Animales</div>
                     </a>
                     
                 </div>
 
                 <div class="iconBx">
-                    <a href="/Animale.php">
+                    <a href="/Src/Php/Animale.php">
                         <ion-icon name="paw-outline"></ion-icon>
                     </a>
                 </div>
@@ -122,14 +127,14 @@
 
             <div class="card">
                 <div class="iconBx">
-                    <a href="/Salud.php">
-                        <div class="cardName">Alimentos</div>
+                    <a href="/Src/Php/Inventario.php">
+                        <div class="cardName">Inventario</div>
                     </a>
                 </div>
 
                 <div class="iconBx">
-                    <a href="/">
-                        <ion-icon name="restaurant-outline"></ion-icon>
+                    <a href="/Src/Php/Inventario.php">
+                    <ion-icon name="map-outline"></ion-icon>
                     </a>
                 </div>
 

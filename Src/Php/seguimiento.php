@@ -6,15 +6,10 @@
     <link rel="stylesheet" href="/Src/Css/Home.css">
     <link rel="stylesheet" href="/Src/Css/Animales.css">
 
-
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="/Src/Js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-
-    <!-- <link rel="stylesheet" href="/Src/Css/Animales.css"> -->
-
-
+    
     <title>Los Santos</title>
 </head>
 <body>
@@ -60,13 +55,14 @@
                     </li>
 
                     <li>
-                        <a href="/Src/Php/seguimiento.php">
+                        <a href="#">
                             <span class="icon">
                                 <ion-icon name="pulse-outline"></ion-icon>
                             </span>
                             <span class="title">Seguimiento</span>
                         </a>
                     </li>
+                    <!-- ------- PROXIMAMENTE ------- -->
 
                     <!-- <li>
                         <a href="#">
@@ -105,60 +101,52 @@
                 </div>
             </div>
             <div class="container-nav">
-            <div class="addMemberBtn">
-                <button>Ingresar</button>
-            </div>
             <table id="example" class=" hover row-border" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Cifra</th>
-                    <th>Nombre del Lote</th>
-                    <th>Tipo de Animal</th>
+                    <th>Nombre Lote</th>
+                    <th>Animal</th>
                     <th>Raza</th>
                     <th>Etapa</th>
                     <th>Fecha</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
                 <tbody id="tableBody">
-
+                    <!-- <td>1</td>
+                    <td>200</td>
+                    <td>Secretary</td>
+                    <td>Pollo</td>
+                    <td>Engorde</td>
+                    <td>Crecimiento</td>
+                    <td>2010-02-12</td>
+                    <td>
+                        <button class="uniBtn" onclick="openEditModal()">Editar</button>
+                        <button class="uniBtn1">Eliminar</button>
+                    </td> -->
                 </tbody>
             </table>
             </div>
+            <div class="dark_bg1" id="editModal">
+                <div class="popup1">
+                    <header>
+                        <h2 class="modalTitle1">Editar Mercancía</h2>
+                        <button class="closeBtn1" onclick="closeEditModal()">&times;</button>
+                    </header>
 
-            <div class="dark_bg">
-        
-                <div class="popup">
-                     <header>
-                        <h2 class="modalTitle">Rellenar el Formulario</h2>
-                        <button class="closeBtn">&times;</button>
-                     </header>
-        
-                     <div class="body">
-                        <form action="#" id="myForm">
+                    <div class="body">
+                        <form id="editForm">
                             <div class="inputFieldContainer">
-        
-                                    <div class="form_control">
-                                        <label>Nombre del Lote:</label>
-                                        <input type="text" name="" id="fName" required>
-                                    </div>
-        
-                                    <div class="form_control">
-                                        <label>Tipo de Animal:</label>
-                                        <select id="tipoAnimal" name="tipoAnimal" required onchange="updateRaza()">
-                                            <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <option value="pollos">Pollos</option>
-                                            <option value="borrego">Borrego</option>
-                                            <option value="chivo">Chivo</option>
-                                        </select>
-                                        
-                                    </div>
-                                    
-                                    
-                                    
-                                    <div class="form_control">
-                                        <label>Raza:</label>
-                                        <select id="raza" name="raza" required>
+                                <div class="form_control">
+                                    <label>Cifra:</label>
+                                    <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
+                                </div>
+
+                                <div class="form_control">
+                                        <label>Etapa:</label>
+                                        <select id="Etapa" name="Etapa" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                             <option value="Etapa">Crecimiento</option>
                                             <option value="Etapa">Desarollo</option>
@@ -166,31 +154,27 @@
                                         </select>
                                     </div>
 
-                                    <div class="form_control">
-                                        <label>Etapa:</label>
-                                        <select id="raza" name="raza" required>
-                                            <option value="" disabled selected>-- Selecciona una opción --</option>
-                                        </select>
-                                    </div>
-        
-                                    <div class="form_control">
-                                        <label>Fecha:</label>
-                                        <input type="date" name="" id="fecha" required>
-                                    </div>
-                                
+                                <div class="form_control">
+                                    <label>Fecha:</label>
+                                    <input type="date" id="editFecha" required>
+                                </div>
                             </div>
                         </form>
-                     </div>
-        
-                     <footer action="#" class="popupFooter" id="myForm">
-                        <button form="myForm" class="submitBtn">Registrar</button>
-                     </footer>
+                    </div>
+
+                    <footer class="popupFooter1">
+                        <button class="submitBtn1" onclick="saveChanges()">Guardar Cambios</button>
+                    </footer>
                 </div>
-        
             </div>
+
+
+            
+    </div>
                 
-        </div>  
+  
     </header>
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
