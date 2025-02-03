@@ -55,7 +55,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="/Src/Php/seguimiento.php">
                             <span class="icon">
                                 <ion-icon name="pulse-outline"></ion-icon>
                             </span>
@@ -110,8 +110,8 @@
                     <th>Categoria</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
-                    <th>Unidad</th>
                     <th>Fecha</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
                 <tbody id="tableBody">
@@ -166,13 +166,15 @@
                                         </select>
                                     </div>
                                     <div class="form_control d-flex align-items-center">
-                                        <label for="cantidad">Cantidad:</label>
-                                        <input type="number" id="cantidad" name="cantidad" required placeholder="Ingrese la cantidad">
+                                        <label for="cantidad">Cifra:</label>
+                                        <input type="number" id="cifra" name="cifra" required placeholder="Ingrese la cantidad">
                                     </div>
 
                                     <div class="form_control">
-                                        <label for="unidad">Unidad:</label>
+                                        <label for="unidad">Cantidad:</label>
                                         <select id="unidad" name="unidad" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option> 
+                                            <option value="unidad">Unidad</option>
                                             <option value="kg">Kilogramos (Kg)</option>
                                             <option value="gm">Gramos (Gm)</option>
                                         </select>
@@ -180,7 +182,7 @@
         
                                     <div class="form_control">
                                         <label>Fecha:</label>
-                                        <input type="date" name="" id="fecha" required>
+                                        <input type="date" name="fecha" id="fecha" required>
                                     </div>
                                 </div>
                             </div>
@@ -220,13 +222,15 @@
                                 </div>
 
                                 <div class="form_control">
-                                    <label>Cantidad:</label>
+                                    <label>Cifra:</label>
                                     <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
                                 </div>
 
                                 <div class="form_control">
-                                        <label for="unidad">Unidad:</label>
+                                        <label for="unidad">Cantidad:</label>
                                         <select id="unidad" name="unidad" required>
+                                            <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="unidad">Unidad</option>
                                             <option value="kg">Kilogramos (Kg)</option>
                                             <option value="gm">Gramos (Gm)</option>
                                         </select>
