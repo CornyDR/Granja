@@ -102,31 +102,31 @@
             </div>
             <div class="container-nav">
             <table id="example" class=" hover row-border" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Cifra</th>
-                    <th>Nombre Lote</th>
-                    <th>Animal</th>
-                    <th>Raza</th>
-                    <th>Etapa</th>
-                    <th>Fecha</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-                <tbody id="tableBody">
-                    <!-- <td>1</td>
-                    <td>200</td>
-                    <td>Secretary</td>
-                    <td>Pollo</td>
-                    <td>Engorde</td>
-                    <td>Crecimiento</td>
-                    <td>2010-02-12</td>
-                    <td>
-                        <button class="uniBtn" onclick="openEditModal()">Editar</button>
-                        <button class="uniBtn1">Eliminar</button>
-                    </td> -->
-                </tbody>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Cifra</th>
+                        <th>Nombre Lote</th>
+                        <th>Animal</th>
+                        <th>Raza</th>
+                        <th>Etapa</th>
+                        <th>Fecha</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                    <tbody id="tableBody">
+                        <!-- <td>1</td>
+                        <td>200</td>
+                        <td>Secretary</td>
+                        <td>Pollo</td>
+                        <td>Engorde</td>
+                        <td>Crecimiento</td>
+                        <td>2010-02-12</td>
+                        <td>
+                            <button class="uniBtn" onclick="openEditModal()">Editar</button>
+                            <button class="uniBtn1">Eliminar</button>
+                        </td> -->
+                    </tbody>
             </table>
             </div>
             <div class="dark_bg1" id="editModal">
