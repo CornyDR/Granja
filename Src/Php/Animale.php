@@ -86,6 +86,7 @@
                     <th>Raza</th>
                     <th>Etapa</th>
                     <th>Fecha</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
                 <tbody id="tableBody">

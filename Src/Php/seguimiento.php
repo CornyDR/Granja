@@ -105,9 +105,9 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Nombre del Lote</th>
+                        <th>Tipo de Animal</th>
                         <th>Cifra</th>
-                        <th>Nombre Lote</th>
-                        <th>Animal</th>
                         <th>Raza</th>
                         <th>Etapa</th>
                         <th>Fecha</th>
@@ -178,7 +178,29 @@
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- =========== Scripts =========  -->
+    <script>
+        function openEditModal() {
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        function saveChanges() {
+            // Logic to save changes goes here
+            // For example, you might want to gather data from the form and send it to the server
+            const cantidad = document.getElementById('editCantidad').value;
+            const etapa = document.getElementById('Etapa').value;
+            const fecha = document.getElementById('editFecha').value;
+
+            // Here you would typically send this data to the server via AJAX or a form submission
+            console.log('Saving changes:', { cantidad, etapa, fecha });
+
+            // Close the modal after saving
+            closeEditModal();
+        }
+    </script>
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/DataTable.js"></script>
     <script src="/Src/Js/regis.js"></script>

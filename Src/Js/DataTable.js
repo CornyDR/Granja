@@ -1,4 +1,37 @@
-$(document).ready(function() {
+$(document).ready(function() { 
+    function openEditModal() {
+        $('.dark_bg').fadeIn();
+    }
+
+    function closeEditModal() {
+        $('.dark_bg').fadeOut();
+    }
+
+    function saveChanges() {
+        let id = $('#myForm').data('edit-id');
+
+        if (id) {
+            let formData = {
+                editar_id: id,
+                nom_lote: $('#fName').val(),
+                tipo_animal: $('#tipoAnimal').val(),
+                cantidad: $('#cantidad').val(),
+                RAZA: $('#raza').val(),
+                etapa: $('#etapa').val(),
+                fecha: $('#fecha').val()
+            };
+
+            $.post('/Src/Php/BD_Animales.php', formData, function(response) {
+                if (response.success) {
+                    alert('Registro actualizado correctamente');
+                    table.ajax.reload();
+                    closeEditModal();
+                } else {
+                    alert('Error al actualizar el registro');
+                }
+            }, 'json');
+        }
+    }
     let table = new DataTable('#example', {
         ajax: {
             url: '/Src/Php/BD_Animales.php',
