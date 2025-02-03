@@ -1,4 +1,37 @@
-$(document).ready(function() {
+$(document).ready(function() { 
+    function openEditModal() {
+        $('.dark_bg1').fadeIn();
+    }
+
+    function closeEditModal() {
+        $('.dark_bg1').fadeOut();
+    }
+
+    function saveChanges(isNewRecord = false) {
+        let id = $('#myForm').data('edit-id');
+
+        if (id) {
+            let formData = {
+                editar_id: id,
+                nom_lote: $('#fName').val(),
+                tipo_animal: $('#tipoAnimal').val(),
+                cantidad: $('#cantidad').val(),
+                RAZA: $('#raza').val(),
+                etapa: $('#etapa').val(),
+                fecha: $('#fecha').val()
+            };
+
+            $.post('/Src/Php/BD_Animales.php', formData, function(response) {
+                if (response.success) {
+                    alert('Registro actualizado correctamente');
+                    table.ajax.reload();
+                    closeEditModal();
+                } else {
+                    alert('Error al actualizar el registro');
+                }
+            }, 'json');
+        }
+    }
     let table = new DataTable('#example', {
         ajax: {
             url: '/Src/Php/BD_Animales.php',
@@ -9,7 +42,7 @@ $(document).ready(function() {
             { data: 'NOM_LOTE' },    // Nombre del Lote
             { data: 'TIPO_ANIMAL' }, // Tipo de Animal
             { data: 'CANTIDAD' },     // Nombre del Animal
-            { data: 'RAZAS' },       // Raza
+            { data: 'RAZA' },       // Raza
             { data: 'ETAPA' },       // Etapa
             { data: 'FECHA' },       // Fecha
             { 
@@ -79,7 +112,7 @@ $(document).ready(function() {
                 nom_lote: $('#fName').val(),
                 tipo_animal: $('#tipoAnimal').val(),
                 cantidad: $('#cantidad').val(),
-                razas: $('#raza').val(),
+                RAZA: $('#raza').val(),
                 etapa: $('#etapa').val(),
                 fecha: $('#fecha').val()
             };

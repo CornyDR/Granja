@@ -9,7 +9,7 @@ submitBtn = document.querySelector('.submitBtn'),
  formInputFields = document.querySelectorAll('form input'),
   uploadimg = document.querySelector("#uploadimg");
 
-// Datos de ejemplo: razas por tipo de animal
+// Datos de ejemplo: RAZA por tipo de animal
 const inventario = {
     "Farmacos": ["A", "B"],
     "Alimentos": ["C", "D"],
@@ -61,7 +61,7 @@ crossBtn.addEventListener('click', ()=>{
         
 //         // Limpiar cualquier contenido dinámico si es necesario
 //         $('#raza').empty().append('<option value="" disabled selected>-- Selecciona una opción --</option>');
-//         $('#raza').prop('disabled', true); // Deshabilitar el select de razas
+//         $('#raza').prop('disabled', true); // Deshabilitar el select de RAZA
 //     });
 // });
 

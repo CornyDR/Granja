@@ -100,33 +100,24 @@
                 </div>
             </div>
             <div class="container-nav">
-                <div class="addMemberBtn">
-                    <button onclick="openIngresar()">Ingresar</button>
-                </div>
-                <table id="example" class=" hover row-border" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Categoria</th>
-                        <th>Producto</th>
-                        <th>Cifra</th>
-                        <th>Cantidad</th>
-                        <th>Fecha</th>
-                        <th>Opciones</th>
-                    </tr>
-                </thead>
-                    <tbody id="tableBody">
-                        <td>1</td>
-                        <td>Hope Fuentes</td>
-                        <td>Secretary</td>
-                        <td>San Francisco</td>
-                        <td>2010-02-12</td>
-                        <td>
-                            <button class="uniBtn" onclick="openEditModal()">Editar</button>
-                            <button class="uniBtn1">Eliminar</button>
-                        </td>
-                    </tbody>
-                </table>
+            <div class="addMemberBtn">
+                <button onclick="openIngresar()">Ingresar</button>
+            </div>
+            <table id="storage" class=" hover row-border" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Categoria</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+                <tbody id="tableBody">
+                    
+                </tbody>
+            </table>
             </div>
 
             <div class="dark_bg">
@@ -263,7 +254,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- =========== Scripts =========  -->
     <script src="/Src/Js/Home.js"></script>
-    <script src="/Src/Js/DataTable.js"></script>
+    <script src="/Src/Js/Inventario.js"></script>
     <script src="/Src/Js/regis.js"></script>
      
 
