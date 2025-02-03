@@ -19,3 +19,16 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
+
+$(document).ready(function() {
+  // Al hacer clic en el botón "Ingresar", mostrar el formulario
+  $(".addMemberBtn button").click(function() {
+      $(".dark_bg").css("display", "flex"); // Mostrar el formulario
+  });
+
+  // Al hacer clic en el botón de cerrar (X), ocultar el formulario
+  $(".closeBtn").click(function() {
+      $(".dark_bg").css("display", "none"); // Ocultar el formulario
+  });
+});
+

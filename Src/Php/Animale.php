@@ -5,22 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Src/Css/Home.css">
     <link rel="stylesheet" href="/Src/Css/Animales.css">
-
-
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="/Src/Js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-
-    <!-- <link rel="stylesheet" href="/Src/Css/Animales.css"> -->
-
-
     <title>Los Santos</title>
 </head>
 <body>
     <header>
-        <!-- ====== Menu ====== -->
-         <div class="container">
+        <div class="container">
             <div class="navegacion">
                 <ul>
                     <li>
@@ -31,7 +23,6 @@
                             <span class="title1">Granja Los Santos</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="/Src/Php/Home.php">
                             <span class="icon">
@@ -40,7 +31,6 @@
                             <span class="title">Inicio</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="/Src/Php/Animale.php">
                             <span class="icon">
@@ -49,7 +39,6 @@
                             <span class="title">Animales</span>
                         </a>
                     </li>
-    
                     <li>
                         <a href="/Src/Php/Inventario.php">
                             <span class="icon">
@@ -58,7 +47,6 @@
                             <span class="title">Inventario</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="/Src/Php/seguimiento.php">
                             <span class="icon">
@@ -67,25 +55,6 @@
                             <span class="title">Seguimiento</span>
                         </a>
                     </li>
-
-                    <!-- <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="trending-up-outline"></ion-icon>                            
-                            </span>
-                            <span class="title">Inversión</span>
-                        </a>
-                    </li>
-    
-                    <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="settings-outline"></ion-icon>
-                            </span>
-                            <span class="title">Ajustes</span>
-                        </a>
-                    </li> -->
-    
                     <li>
                         <a href="/index.php">
                             <span class="icon">
@@ -97,7 +66,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -121,26 +89,34 @@
                 </tr>
             </thead>
                 <tbody id="tableBody">
-
+                    <tr>
+                        <td>1</td>
+                        <td>Hope Fuentes</td>
+                        <td>Secretary</td>
+                        <td>San Francisco</td>
+                        <td>2010-02-12</td>
+                        <td>
+                            <button class="uniBtn">Editar</button>
+                            <button class="uniBtn1">Eliminar</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             </div>
-
             <div class="dark_bg">
-        
                 <div class="popup">
-                     <header>
+                    <header>
                         <h2 class="modalTitle">Rellenar el Formulario</h2>
                         <button class="closeBtn">&times;</button>
-                     </header>
-        
-                     <div class="body">
-                        <form action="#" id="myForm">
+                    </header>
+                    <div class="body">
+                        <form id="myForm">
                             <div class="inputFieldContainer">
         
+                                
                                     <div class="form_control">
                                         <label>Nombre del Lote:</label>
-                                        <input type="text" name="" id="fName" required>
+                                        <input type="text" name="nombreLote" id="nombreLote" required>
                                     </div>
         
                                     <div class="form_control">
@@ -160,9 +136,9 @@
                                         <label>Raza:</label>
                                         <select id="raza" name="raza" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <option value="Etapa">Crecimiento</option>
+                                            <!-- <option value="Etapa">Crecimiento</option>
                                             <option value="Etapa">Desarollo</option>
-                                            <option value="Etapa">Venta</option>
+                                            <option value="Etapa">Venta</option> -->
                                         </select>
                                     </div>
 
@@ -172,33 +148,31 @@
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
                                     </div>
-        
+
+                                    <div class="form_control">
+                                    <label>Cifra:</label>
+                                    <input type="number" name="cantidad" id="cantidad" required>
+                                    </div>
+
                                     <div class="form_control">
                                         <label>Fecha:</label>
-                                        <input type="date" name="" id="fecha" required>
+                                        <input type="date" name="fecha" id="fecha" required>
                                     </div>
                                 
                             </div>
                         </form>
-                     </div>
-        
-                     <footer action="#" class="popupFooter" id="myForm">
-                        <button form="myForm" class="submitBtn">Registrar</button>
-                     </footer>
+                    </div>
+                    <footer class="popupFooter">
+                        <button type="button" class="submitBtn" id="registrarBtn">Registrar</button>
+                    </footer>
                 </div>
-        
             </div>
-                
         </div>  
     </header>
-    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- =========== Scripts =========  -->
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/DataTable.js"></script>
     <script src="/Src/Js/regis.js"></script>
-     
-
 </body>
 </html>

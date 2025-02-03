@@ -36,13 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     $id = $_POST['editar_id'];
     $nombreLote = $_POST['nom_lote'];
     $tipoAnimal = $_POST['tipo_animal'];
-    $raza = $_POST['razas'];
+    $cantidad = $_POST['cantidad'];
+    $raza = $_POST['raza'];
     $etapa = $_POST['etapa'];
     $fecha = $_POST['fecha'];
 
     $query = "UPDATE ANIMALES SET 
                 NOM_LOTE = :nombreLote, 
                 TIPO_ANIMAL = :tipoAnimal, 
+                CANTIDAD = :cantidad,
                 RAZAS = :raza, 
                 ETAPA = :etapa, 
                 FECHA = TO_DATE(:fecha, 'YYYY-MM-DD') 
@@ -51,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     $stid = oci_parse($conn, $query);
     oci_bind_by_name($stid, ':nombreLote', $nombreLote);
     oci_bind_by_name($stid, ':tipoAnimal', $tipoAnimal);
+    oci_bind_by_name($stid, ':cantidad', $cantidad);
     oci_bind_by_name($stid, ':raza', $raza);
     oci_bind_by_name($stid, ':etapa', $etapa);
     oci_bind_by_name($stid, ':fecha', $fecha);
@@ -68,8 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     exit;
 }
 
+
+
+
 // Si no se envió un POST para eliminar o editar, obtener los datos
-$query = 'SELECT ID_LOTE, NOM_LOTE, TIPO_ANIMAL, RAZAS, ETAPA, TO_CHAR(FECHA, \'YYYY-MM-DD\') AS FECHA FROM ANIMALES ORDER BY ID_LOTE';
+$query = 'SELECT ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, ETAPA, TO_CHAR(FECHA, \'YYYY-MM-DD\') AS FECHA FROM ANIMALES ORDER BY ID_LOTE';
 $stid = oci_parse($conn, $query);
 oci_execute($stid);
 

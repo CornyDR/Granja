@@ -1,18 +1,13 @@
 var newMemberAddBtn = document.querySelector('.addMemberBtn'),
 darkBg = document.querySelector('.dark_bg'),
-darkBg1 = document.querySelector('.dark_bg1'),
 popupForm = document.querySelector('.popup'),
-popupForm1 = document.querySelector('.popup1'),
 crossBtn = document.querySelector('.closeBtn'),
-crossBtn1 = document.querySelector('.closeBtn1'),
 submitBtn = document.querySelector('.submitBtn'),
-modalTitle = document.querySelector('.modalTitle'),
-modalTitle1 = document.querySelector('.modalTitle1'),
-popupFooter = document.querySelector('.popupFooter'),
-popupFooter1 = document.querySelector('.popupFooter1'),
-form = document.querySelector('form'),
-form = document.querySelector('form1'),
-formInputFields = document.querySelectorAll('form input');
+ modalTitle = document.querySelector('.modalTitle'),
+ popupFooter = document.querySelector('.popupFooter'),
+ form = document.querySelector('form'),
+ formInputFields = document.querySelectorAll('form input'),
+  uploadimg = document.querySelector("#uploadimg");
 
 // Datos de ejemplo: razas por tipo de animal
 const razasPorAnimal = {
@@ -82,28 +77,23 @@ function updateP() {
     }
 }
 
-function openIngresar(){
+newMemberAddBtn.addEventListener('click', ()=> {
     darkBg.classList.add('active')
     popupForm.classList.add('active')
-}
+})
 
-function closeBtn(){
+crossBtn.addEventListener('click', ()=>{
     darkBg.classList.remove('active')
     popupForm.classList.remove('active')
     form.reset()
-}
+})
 
-function openEditModal() {
 
-    darkBg1.classList.add('active');
-    popupForm1.classList.add('active');
-}
-function closeEditModal() {
-    darkBg1.classList.remove('active');
-    popupForm1.classList.remove('active');
-    form.reset();
-}
 
-function saveChanges() {// Aquí puedes agregar la lógica para guardar los cambios en la tabla
-    closeEditModal();
-}
+
+
+
+
+
+
+
