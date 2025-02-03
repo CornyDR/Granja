@@ -1,99 +1,73 @@
-document.addEventListener("DOMContentLoaded", function () {
-    cargarInventario();
+$$(document).ready(function () {
+    // Inicializar DataTable con el ID correcto
+    let table = new DataTable('#storage', {  // Cambié a '#storage'
+        ajax: {
+            "url": "/Src/Php/get_inventario.php",
+            "type": "POST",
+            "data": { accion: "listar" }
+        },
+        "columns": [
+            { "data": "id" },
+            { "data": "categoria" },
+            { "data": "producto" },
+            { "data": "cantidad" },
+            { "data": "fecha" },
+            { 
+                "data": null,
+                "render": function (data, type, row) {
+                    return `
+                        <button class="btn-editar" data-id="${row.id}">✏️ Editar</button>
+                        <button class="btn-eliminar" data-id="${row.id}">🗑️ Eliminar</button>
+                    `;
+                }
+            }
+        ]
+    });
+
+    // Evento para Editar
+    $('#storage tbody').on('click', '.btn-editar', function () {
+        let id = $(this).data('id');
+        console.log("Editar ID:", id);
+        openEditModal(id);
+    });
+
+    // Evento para Eliminar
+    $('#storage tbody').on('click', '.btn-eliminar', function () {
+        let id = $(this).data('id');
+        console.log("Eliminar ID:", id);
+        eliminarRegistro(id);
+    });
 });
 
-function cargarInventario() {
-    fetch("get_inventario.php")
-        .then(response => response.json())
-        .then(data => {
-            let tabla = document.getElementById("tablaInventario");
-            tabla.innerHTML = "";
-            data.forEach(item => {
-                let fila = `<tr>
-                    <td>${item.ID_INVENTARIO}</td>
-                    <td>${item.CATEGORIA}</td>
-                    <td>${item.PRODUCTO}</td>
-                    <td>${item.CANTIDAD}</td>
-                    <td>${item.UNIDAD}</td>
-                    <td>${item.FECHA_REGISTRO}</td>
-                    <td>
-                        <button onclick="editarInventario(${item.ID_INVENTARIO}, '${item.CATEGORIA}', '${item.PRODUCTO}', ${item.CANTIDAD}, '${item.UNIDAD}', '${item.FECHA_REGISTRO}')">Editar</button>
-                        <button onclick="eliminarInventario(${item.ID_INVENTARIO})">Eliminar</button>
-                    </td>
-                </tr>`;
-                tabla.innerHTML += fila;
-            });
-        })
-        .catch(error => console.error("Error al obtener datos: ", error));
-}
-
-function insertarInventario() {
-    let datos = new FormData();
-    datos.append("accion", "insertar");
-    datos.append("categoria", document.getElementById("categoria").value);
-    datos.append("producto", document.getElementById("producto").value);
-    datos.append("cantidad", document.getElementById("cantidad").value);
-    datos.append("unidad", document.getElementById("unidad").value);
-    datos.append("fecha", document.getElementById("fecha").value);
-
-    fetch("get_inventario.php", {
+// Función para abrir el modal de edición
+function openEditModal(id) {
+    $.ajax({
+        url: "/Src/Php/get_inventario.php",
         method: "POST",
-        body: datos
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        cargarInventario();
-    })
-    .catch(error => console.error("Error al insertar: ", error));
+        data: { accion: "obtener", id: id },
+        success: function (data) {
+            let registro = JSON.parse(data);
+            $('#editProductName').val(registro.producto);
+            $('#editCategoria').val(registro.categoria);
+            $('#editCantidad').val(registro.cantidad);
+            $('#editFecha').val(registro.fecha);
+            $('#editModal').show();
+        }
+    });
 }
 
-function editarInventario(id, categoria, producto, cantidad, unidad, fecha) {
-    document.getElementById("id_inventario").value = id;
-    document.getElementById("categoria").value = categoria;
-    document.getElementById("producto").value = producto;
-    document.getElementById("cantidad").value = cantidad;
-    document.getElementById("unidad").value = unidad;
-    document.getElementById("fecha").value = fecha;
-}
-
-function actualizarInventario() {
-    let datos = new FormData();
-    datos.append("accion", "editar");
-    datos.append("id_inventario", document.getElementById("id_inventario").value);
-    datos.append("categoria", document.getElementById("categoria").value);
-    datos.append("producto", document.getElementById("producto").value);
-    datos.append("cantidad", document.getElementById("cantidad").value);
-    datos.append("unidad", document.getElementById("unidad").value);
-    datos.append("fecha", document.getElementById("fecha").value);
-
-    fetch("get_inventario.php", {
-        method: "POST",
-        body: datos
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        cargarInventario();
-    })
-    .catch(error => console.error("Error al actualizar: ", error));
-}
-
-function eliminarInventario(id) {
-    if (confirm("¿Seguro que deseas eliminar este registro?")) {
-        let datos = new FormData();
-        datos.append("accion", "eliminar");
-        datos.append("id_inventario", id);
-
-        fetch("get_inventario.php", {
+// Función para eliminar un registro
+function eliminarRegistro(id) {
+    if (confirm("¿Estás seguro de que quieres eliminar este registro?")) {
+        $.ajax({
+            url: "/Src/Php/get_inventario.php",
             method: "POST",
-            body: datos
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);
-            cargarInventario();
-        })
-        .catch(error => console.error("Error al eliminar: ", error));
+            data: { accion: "eliminar", id: id },
+            success: function (response) {
+                alert("Registro eliminado correctamente");
+                $('#storage').DataTable().ajax.reload(); // Actualiza la tabla después de eliminar
+            }
+        });
     }
 }
+

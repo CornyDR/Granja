@@ -1,13 +1,13 @@
 $(document).ready(function() { 
     function openEditModal() {
-        $('.dark_bg').fadeIn();
+        $('.dark_bg1').fadeIn();
     }
 
     function closeEditModal() {
-        $('.dark_bg').fadeOut();
+        $('.dark_bg1').fadeOut();
     }
 
-    function saveChanges() {
+    function saveChanges(isNewRecord = false) {
         let id = $('#myForm').data('edit-id');
 
         if (id) {

@@ -103,7 +103,7 @@
             <div class="addMemberBtn">
                 <button onclick="openIngresar()">Ingresar</button>
             </div>
-            <table id="example" class=" hover row-border" style="width:100%">
+            <table id="storage" class=" hover row-border" style="width:100%">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -115,15 +115,7 @@
                 </tr>
             </thead>
                 <tbody id="tableBody">
-                    <td>1</td>
-                    <td>Hope Fuentes</td>
-                    <td>Secretary</td>
-                    <td>San Francisco</td>
-                    <td>2010-02-12</td>
-                    <td>
-                        <button class="uniBtn" onclick="openEditModal()">Editar</button>
-                        <button class="uniBtn1">Eliminar</button>
-                    </td>
+                    
                 </tbody>
             </table>
             </div>

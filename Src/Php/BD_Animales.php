@@ -31,6 +31,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nuevo_id'])) {
+    $nombreLote = $_POST['nom_lote'];
+    $tipoAnimal = $_POST['tipo_animal'];
+    $cantidad = $_POST['cantidad'];
+    $raza = $_POST['raza'];
+    $etapa = $_POST['etapa'];
+    $fecha = $_POST['fecha'];
+
+    $query = "INSERT INTO ANIMALES (NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZAS, ETAPA, FECHA) 
+              VALUES (:nombreLote, :tipoAnimal, :cantidad, :raza, :etapa, TO_DATE(:fecha, 'YYYY-MM-DD'))";
+
+    $stid = oci_parse($conn, $query);
+    oci_bind_by_name($stid, ':nombreLote', $nombreLote);
+    oci_bind_by_name($stid, ':tipoAnimal', $tipoAnimal);
+    oci_bind_by_name($stid, ':cantidad', $cantidad);
+    oci_bind_by_name($stid, ':raza', $raza);
+    oci_bind_by_name($stid, ':etapa', $etapa);
+    oci_bind_by_name($stid, ':fecha', $fecha);
+    $result = oci_execute($stid);
+
+    if ($result) {
+        echo json_encode(['success' => true, 'message' => 'Registro insertado correctamente.']);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Error al insertar el registro.']);
+    }
+
+    oci_free_statement($stid);
+    oci_close($conn);
+    exit;
+}
+
 // Comprobar si se quiere actualizar un registro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     $id = $_POST['editar_id'];

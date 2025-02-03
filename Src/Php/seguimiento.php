@@ -132,7 +132,7 @@
             <div class="dark_bg1" id="editModal">
                 <div class="popup1">
                     <header>
-                        <h2 class="modalTitle1">Editar Mercancía</h2>
+                        <h2 class="modalTitle1">Agregar/Editar Mercancía</h2>
                         <button class="closeBtn1" onclick="closeEditModal()">&times;</button>
                     </header>
 
