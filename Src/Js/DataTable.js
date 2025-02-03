@@ -9,7 +9,7 @@ $(document).ready(function() {
             { data: 'NOM_LOTE' },    // Nombre del Lote
             { data: 'TIPO_ANIMAL' }, // Tipo de Animal
             { data: 'CANTIDAD' },     // Nombre del Animal
-            { data: 'RAZAS' },       // Raza
+            { data: 'RAZA' },       // Raza
             { data: 'ETAPA' },       // Etapa
             { data: 'FECHA' },       // Fecha
             { 
@@ -79,7 +79,7 @@ $(document).ready(function() {
                 nom_lote: $('#fName').val(),
                 tipo_animal: $('#tipoAnimal').val(),
                 cantidad: $('#cantidad').val(),
-                razas: $('#raza').val(),
+                RAZA: $('#raza').val(),
                 etapa: $('#etapa').val(),
                 fecha: $('#fecha').val()
             };

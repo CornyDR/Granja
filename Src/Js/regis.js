@@ -9,7 +9,7 @@ submitBtn = document.querySelector('.submitBtn'),
  formInputFields = document.querySelectorAll('form input'),
   uploadimg = document.querySelector("#uploadimg");
 
-// Datos de ejemplo: razas por tipo de animal
+// Datos de ejemplo: RAZA por tipo de animal
 const razasPorAnimal = {
     "pollos": ["Pollo Criollo", "Pollo de Engorde"],
     "borrego": ["Borrego Pelibuey", "Borrego Dorper"],
@@ -21,25 +21,25 @@ function updateRaza() {
     const razaSelect = document.getElementById("raza");
     const selectedAnimal = tipoAnimalSelect.value;
 
-    // Limpiar las opciones del select de razas
+    // Limpiar las opciones del select de RAZA
     razaSelect.innerHTML = '<option value="" disabled selected>-- Selecciona una opción --</option>';
 
     if (selectedAnimal) {
-        // Habilitar el select de razas
+        // Habilitar el select de RAZA
         razaSelect.disabled = false;
 
-        // Obtener las razas del tipo de animal seleccionado
-        const razas = razasPorAnimal[selectedAnimal];
+        // Obtener las RAZA del tipo de animal seleccionado
+        const RAZA = razasPorAnimal[selectedAnimal];
 
-        // Agregar las nuevas opciones al select de razas
-        razas.forEach(raza => {
+        // Agregar las nuevas opciones al select de RAZA
+        RAZA.forEach(raza => {
             const option = document.createElement("option");
             option.value = raza;
             option.textContent = raza;
             razaSelect.appendChild(option);
         });
     } else {
-        // Deshabilitar el select de razas si no hay selección
+        // Deshabilitar el select de RAZA si no hay selección
         razaSelect.disabled = true;
     }
 }

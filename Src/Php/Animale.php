@@ -80,9 +80,9 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Cifra</th>
                     <th>Nombre del Lote</th>
                     <th>Tipo de Animal</th>
+                    <th>Cifra</th>
                     <th>Raza</th>
                     <th>Etapa</th>
                     <th>Fecha</th>
