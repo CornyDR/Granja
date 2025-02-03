@@ -183,7 +183,7 @@
         
                                     <div class="form_control">
                                         <label>Fecha:</label>
-                                        <input type="date" name="" id="fecha" required>
+                                        <input type="date" name="fecha" id="fecha" required>
                                     </div>
                                 </div>
                             </div>
