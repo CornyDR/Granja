@@ -110,8 +110,8 @@
                     <th>Categoria</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
+                    <th>Unidad</th>
                     <th>Fecha</th>
-                    <th>Opciones</th>
                 </tr>
             </thead>
                 <tbody id="tableBody">
@@ -258,7 +258,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- =========== Scripts =========  -->
     <script src="/Src/Js/Home.js"></script>
-    <script src="/Src/Js/DataTable.js"></script>
+    <script src="/Src/Js/Inventario.js"></script>
     <script src="/Src/Js/regis.js"></script>
      
 
