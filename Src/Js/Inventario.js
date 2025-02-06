@@ -1,6 +1,6 @@
-$$(document).ready(function () {
-    // Inicializar DataTable con el ID correcto
-    let table = new DataTable('#storage', {  // Cambié a '#storage'
+$(document).ready(function () {
+    // Inicializar DataTable con el ID correcto #example
+    let table = new DataTable('#storage', {  // Mantener '#example'
         ajax: {
             "url": "/Src/Php/get_inventario.php",
             "type": "POST",
