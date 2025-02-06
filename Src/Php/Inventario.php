@@ -115,7 +115,17 @@
                 </tr>
             </thead>
                 <tbody id="tableBody">
-                    
+                <td>1</td>
+                        <!-- <td>200</td>
+                        <td>Secretary</td>
+                        <td>Pollo</td>
+                        <td>Engorde</td>
+                        <td>Crecimiento</td>
+                        <td>2010-02-12</td>
+                        <td>
+                            <button class="uniBtn" onclick="openEditModal()">Editar</button>
+                            <button class="uniBtn1">Eliminar</button>
+                        </td> -->
                 </tbody>
             </table>
             </div>
@@ -166,7 +176,7 @@
                                         <label for="unidad">Cantidad:</label>
                                         <select id="unidad" name="unidad" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option> 
-                                            <option value="unidad">Unidad</option>
+                                            <option value="unidad">Unidad (U)</option>
                                             <option value="kg">Kilogramos (Kg)</option>
                                             <option value="gm">Gramos (Gm)</option>
                                         </select>

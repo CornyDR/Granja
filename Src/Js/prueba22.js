@@ -5,7 +5,7 @@ const data = {
   labels: labels1,
   backgroundcolor: 'rgba(0, 247, 247, 0.2)',
   datasets: [{
-    label: 'grafica 2',
+    label: 'Ocultar',
     data: [65, 59, 80, 81, 56, 55, 40],
     fill: false,
     borderColor: 'rgb(238, 224, 30)',

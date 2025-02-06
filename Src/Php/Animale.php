@@ -86,7 +86,7 @@
                     <th>Raza</th>
                     <th>Etapa</th>
                     <th>Fecha</th>
-                    <th>Opciones</th>
+                    
                 </tr>
             </thead>
                 <tbody id="tableBody">
@@ -96,10 +96,6 @@
                         <td>Secretary</td>
                         <td>San Francisco</td>
                         <td>2010-02-12</td>
-                        <td>
-                            <button class="uniBtn">Editar</button>
-                            <button class="uniBtn1">Eliminar</button>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -137,16 +133,16 @@
                                         <label>Raza:</label>
                                         <select id="raza" name="raza" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <!-- <option value="Etapa">Crecimiento</option>
-                                            <option value="Etapa">Desarollo</option>
-                                            <option value="Etapa">Venta</option> -->
                                         </select>
                                     </div>
 
                                     <div class="form_control">
                                         <label>Etapa:</label>
-                                        <select id="raza" name="raza" required>
+                                        <select id="Etapa" name="Etapa" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
+                                            <option value="Etapa">Crecimiento</option>
+                                            <option value="Etapa">Desarollo</option>
+                                            <option value="Etapa">Venta</option>
                                         </select>
                                     </div>
 
@@ -164,7 +160,7 @@
                         </form>
                     </div>
                     <footer class="popupFooter">
-                        <button type="button" class="submitBtn" id="registrarBtn">Registrar</button>
+                        <button type="submit" class="submitBtn" id="registrarBtn">Registrar</button>
                     </footer>
                 </div>
             </div>

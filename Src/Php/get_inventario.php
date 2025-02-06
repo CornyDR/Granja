@@ -72,4 +72,3 @@ switch ($accion) {
 }
 
 oci_close($conn);
-?>

@@ -202,7 +202,7 @@
         }
     </script>
     <script src="/Src/Js/Home.js"></script>
-    <script src="/Src/Js/DataTable.js"></script>
+    <script src="/Src/Js/Seguimiento.js"></script>
     <script src="/Src/Js/regis.js"></script>
      
 

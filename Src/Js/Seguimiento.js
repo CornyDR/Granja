@@ -49,7 +49,8 @@ $(document).ready(function() {
                 data: null, 
                 render: function(data, type, row) {
                     return `
-                        
+                        <button class="editBtn" data-id="${row.ID_LOTE}">Editar</button>
+                        <button class="deleteBtn" data-id="${row.ID_LOTE}">Eliminar</button>
                     `;
                 } 
             }

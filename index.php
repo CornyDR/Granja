@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($user) {
             $_SESSION['user'] = $user['USUARIO'];
-            header("Location: Home.php");
+            header("Location: /Src/Php/Home.php");
             exit();
         } else {
             $error_message = "Usuario o contraseña incorrectos.";
