@@ -109,8 +109,8 @@
                         <th>Tipo de Animal</th>
                         <th>Cifra</th>
                         <th>Raza</th>
-                        <th>Etapa</th>
-                        <th>Fecha</th>
+                        <th>Fecha Entrada</th>
+                        <th>Fecha Salida</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>

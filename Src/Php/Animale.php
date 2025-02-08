@@ -84,9 +84,9 @@
                     <th>Tipo de Animal</th>
                     <th>Cifra</th>
                     <th>Raza</th>
-                    <th>Etapa</th>
-                    <th>Fecha</th>
-                    
+                    <th>Fecha Entrada</th>
+                    <th>Fecha Salida</th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
                 <tbody id="tableBody">
@@ -137,22 +137,16 @@
                                     </div>
 
                                     <div class="form_control">
-                                        <label>Etapa:</label>
-                                        <select id="Etapa" name="Etapa" required>
-                                            <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <option value="Etapa">Crecimiento</option>
-                                            <option value="Etapa">Desarollo</option>
-                                            <option value="Etapa">Venta</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form_control">
                                     <label>Cifra:</label>
                                     <input type="number" name="cantidad" id="cantidad" required>
                                     </div>
 
                                     <div class="form_control">
-                                        <label>Fecha:</label>
+                                        <label>Fecha de Entrada:</label>
+                                        <input type="date" name="fecha" id="fecha" required>
+                                    </div>
+                                    <div class="form_control">
+                                        <label>Fecha de Salida:</label>
                                         <input type="date" name="fecha" id="fecha" required>
                                     </div>
                                 
