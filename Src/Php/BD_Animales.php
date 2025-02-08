@@ -31,35 +31,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nuevo_id'])) {
-    $nombreLote = $_POST['nom_lote'];
-    $tipoAnimal = $_POST['tipo_animal'];
-    $cantidad = $_POST['cantidad'];
-    $raza = $_POST['raza'];
-    $etapa = $_POST['etapa'];
-    $fecha = $_POST['fecha'];
+// Obtener datos del formulario
+$idLote = isset($_POST['idLote']) ? $_POST['idLote'] : null;
+$nombreLote = isset($_POST['nombreLote']) ? $_POST['nombreLote'] : null;
+$tipoAnimal = isset($_POST['tipoAnimal']) ? $_POST['tipoAnimal'] : null;
+$cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : null;
+$raza = isset($_POST['raza']) ? $_POST['raza'] : null;
+$etapa = isset($_POST['etapa']) ? $_POST['etapa'] : null;
+$fecha = isset($_POST['fecha']) ? $_POST['fecha'] : null;
 
-    $query = "INSERT INTO ANIMALES (NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZAS, ETAPA, FECHA) 
-              VALUES (:nombreLote, :tipoAnimal, :cantidad, :raza, :etapa, TO_DATE(:fecha, 'YYYY-MM-DD'))";
+// Validar que todos los campos requeridos están presentes
+if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $etapa && $fecha) {
+    // Preparar la consulta SQL
+    $sql = "INSERT INTO ANIMALES (ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, ETAPA, FECHA) VALUES (:idLote, :nombreLote, :tipoAnimal, :cantidad, :raza, :etapa, TO_DATE(:fecha, 'YYYY-MM-DD'))";
+    $stid = oci_parse($conn, $sql);
 
-    $stid = oci_parse($conn, $query);
+    // Vincular los parámetros
+    oci_bind_by_name($stid, ':idLote', $idLote);
     oci_bind_by_name($stid, ':nombreLote', $nombreLote);
     oci_bind_by_name($stid, ':tipoAnimal', $tipoAnimal);
     oci_bind_by_name($stid, ':cantidad', $cantidad);
     oci_bind_by_name($stid, ':raza', $raza);
     oci_bind_by_name($stid, ':etapa', $etapa);
     oci_bind_by_name($stid, ':fecha', $fecha);
-    $result = oci_execute($stid);
 
-    if ($result) {
-        echo json_encode(['success' => true, 'message' => 'Registro insertado correctamente.']);
+    // Ejecutar la consulta
+    if (oci_execute($stid)) {
+        echo "Nuevo registro creado exitosamente";
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error al insertar el registro.']);
+        $e = oci_error($stid);
+        echo "Error: " . $e['message'];
     }
-
-    oci_free_statement($stid);
-    oci_close($conn);
-    exit;
+} else {
+    echo "Error: Todos los campos son requeridos.";
 }
 
 // Comprobar si se quiere actualizar un registro
@@ -121,4 +125,3 @@ oci_close($conn);
 // Respuesta en JSON
 header('Content-Type: application/json');
 echo json_encode($animales);
-?>
