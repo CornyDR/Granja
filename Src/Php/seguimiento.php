@@ -115,7 +115,7 @@
                     </tr>
                 </thead>
                     <tbody id="tableBody">
-                        <!-- <td>1</td>
+                        <td>1</td>
                         <td>200</td>
                         <td>Secretary</td>
                         <td>Pollo</td>
@@ -125,7 +125,7 @@
                         <td>
                             <button class="uniBtn" onclick="openEditModal()">Editar</button>
                             <button class="uniBtn1">Eliminar</button>
-                        </td> -->
+                        </td>
                     </tbody>
             </table>
             </div>

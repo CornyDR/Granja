@@ -89,11 +89,30 @@ crossBtn.addEventListener('click', ()=>{
 })
 
 
+//Esto es lo que te digo 
 
+// function openIngresar(){
+//     darkBg.classList.add('active')
+//     popupForm.classList.add('active')
+// }
 
+// function closeBtn(){
+//     darkBg.classList.remove('active')
+//     popupForm.classList.remove('active')
+//     form.reset()
+// }
 
+// function openEditModal() {
 
+//     darkBg1.classList.add('active');
+//     popupForm1.classList.add('active');
+// }
+// function closeEditModal() {
+//     darkBg1.classList.remove('active');
+//     popupForm1.classList.remove('active');
+//     form.reset();
+// }
 
-
-
-
+// function saveChanges() {// Aquí puedes agregar la lógica para guardar los cambios en la tabla
+//     closeEditModal();
+// }

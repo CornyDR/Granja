@@ -3,10 +3,10 @@ const ctx = document.getElementById('barchart');
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Pollo', 'Puerco', 'Chivo', 'Borrego'],
+      labels: ['Pollo', 'Chivo', 'Borrego'],
       datasets: [{
         label: 'Ocultar',
-        data: [12, 19, 3, 5],
+        data: [12, 19, 3],
         borderWidth: 1,
         
         
