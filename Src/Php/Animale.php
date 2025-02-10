@@ -110,10 +110,9 @@
                         <form id="myForm">
                             <div class="inputFieldContainer">
         
-                                
                                     <div class="form_control">
                                         <label>Nombre del Lote:</label>
-                                        <input type="text" name="nombreLote" id="nombreLote" required>
+                                        <input type="text" name="nombreLote" id="nombreLote" maxlength="20" required>
                                     </div>
         
                                     <div class="form_control">
@@ -124,10 +123,7 @@
                                             <option value="borrego">Borrego</option>
                                             <option value="chivo">Chivo</option>
                                         </select>
-                                        
                                     </div>
-                                    
-                                    
                                     
                                     <div class="form_control">
                                         <label>Raza:</label>
@@ -137,17 +133,17 @@
                                     </div>
 
                                     <div class="form_control">
-                                    <label>Cifra:</label>
-                                    <input type="number" name="cantidad" id="cantidad" required>
+                                        <label>Cifra:</label>
+                                        <input type="number" name="cantidad" id="cantidad" required pattern="\d{1,3}" oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);">
                                     </div>
 
                                     <div class="form_control">
                                         <label>Fecha de Entrada:</label>
-                                        <input type="date" name="fecha" id="fecha" required>
+                                        <input type="date" name="fechaEntrada" id="fechaEntrada" required>
                                     </div>
                                     <div class="form_control">
                                         <label>Fecha de Salida:</label>
-                                        <input type="date" name="fecha" id="fecha" required>
+                                        <input type="date" name="fechaSalida" id="fechaSalida" required>
                                     </div>
                                 
                             </div>

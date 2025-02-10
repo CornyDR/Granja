@@ -1,37 +1,4 @@
-$(document).ready(function() { 
-    function openEditModal() {
-        $('.dark_bg1').fadeIn();
-    }
-
-    function closeEditModal() {
-        $('.dark_bg1').fadeOut();
-    }
-
-    function saveChanges(isNewRecord = false) {
-        let id = $('#myForm').data('edit-id');
-
-        if (id) {
-            let formData = {
-                editar_id: id,
-                nom_lote: $('#fName').val(),
-                tipo_animal: $('#tipoAnimal').val(),
-                cantidad: $('#cantidad').val(),
-                RAZA: $('#raza').val(),
-                etapa: $('#etapa').val(),
-                fecha: $('#fecha').val()
-            };
-
-            $.post('/Src/Php/BD_Animales.php', formData, function(response) {
-                if (response.success) {
-                    alert('Registro actualizado correctamente');
-                    table.ajax.reload();
-                    closeEditModal();
-                } else {
-                    alert('Error al actualizar el registro');
-                }
-            }, 'json');
-        }
-    }
+$(document).ready(function() {
     let table = new DataTable('#example', {
         ajax: {
             url: '/Src/Php/BD_Animales.php',
@@ -41,15 +8,16 @@ $(document).ready(function() {
             { data: 'ID_LOTE' },     // Columna ID
             { data: 'NOM_LOTE' },    // Nombre del Lote
             { data: 'TIPO_ANIMAL' }, // Tipo de Animal
-            { data: 'CANTIDAD' },     // Nombre del Animal
-            { data: 'RAZA' },       // Raza
+            { data: 'CANTIDAD' },    // Cantidad
+            { data: 'RAZA' },        // Raza
             { data: 'ETAPA' },       // Etapa
             { data: 'FECHA' },       // Fecha
             { 
                 data: null, 
                 render: function(data, type, row) {
                     return `
-                        
+                        <button class="editBtn" data-id="${row.ID_LOTE}">✏️ Editar</button>
+                        <button class="deleteBtn" data-id="${row.ID_LOTE}">🗑️ Eliminar</button>
                     `;
                 } 
             }
@@ -80,7 +48,7 @@ $(document).ready(function() {
         }
     });
 
-    // Evento para editar registro (Ejemplo: puedes mostrar un modal con datos)
+    // Evento para editar registro
     $('#example tbody').on('click', '.editBtn', function() {
         let id = $(this).data('id');
 
@@ -88,12 +56,12 @@ $(document).ready(function() {
         let rowData = table.row($(this).parents('tr')).data();
 
         // Llenar formulario con datos
-        $('#fName').val(rowData.NOM_LOTE);
+        $('#nombreLote').val(rowData.NOM_LOTE);
         $('#tipoAnimal').val(rowData.TIPO_ANIMAL);
         $('#cantidad').val(rowData.CANTIDAD);
-        $('#raza').val(rowData.RAZAS);
+        $('#raza').val(rowData.RAZA);
         $('#etapa').val(rowData.ETAPA);
-        $('#fecha').val(rowData.FECHA);
+        $('#fechaEntrada').val(rowData.FECHA);
         $('#myForm').data('edit-id', id);
 
         // Mostrar modal de edición
@@ -108,12 +76,12 @@ $(document).ready(function() {
         if (id) {
             let formData = {
                 editar_id: id,
-                nom_lote: $('#fName').val(),
+                nom_lote: $('#nombreLote').val(),
                 tipo_animal: $('#tipoAnimal').val(),
                 cantidad: $('#cantidad').val(),
-                RAZA: $('#raza').val(),
+                raza: $('#raza').val(),
                 etapa: $('#etapa').val(),
-                fecha: $('#fecha').val()
+                fecha: $('#fechaEntrada').val()
             };
 
             $.post('/Src/Php/BD_Animales.php', formData, function(response) {

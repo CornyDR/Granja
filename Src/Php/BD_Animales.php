@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Configuración de conexión a Oracle
 $USUARIOBD = 'SYSTEM';
 $claveBD = '123456';
@@ -23,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
     if ($result) {
         echo json_encode(['success' => true, 'message' => 'Registro eliminado correctamente.']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error al eliminar el registro.']);
+        $e = oci_error($stid);
+        echo json_encode(['success' => false, 'message' => 'Error al eliminar el registro: ' . $e['message']]);
     }
 
     oci_free_statement($stid);
@@ -42,6 +47,16 @@ $fecha = isset($_POST['fecha']) ? $_POST['fecha'] : null;
 
 // Validar que todos los campos requeridos están presentes
 if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $etapa && $fecha) {
+    // Validar longitud de los campos
+    if (strlen($nombreLote) > 20) {
+        echo json_encode(['error' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
+        exit;
+    }
+    if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
+        echo json_encode(['error' => 'La cifra debe tener un máximo de 3 números.']);
+        exit;
+    }
+
     // Preparar la consulta SQL
     $sql = "INSERT INTO ANIMALES (ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, ETAPA, FECHA) VALUES (:idLote, :nombreLote, :tipoAnimal, :cantidad, :raza, :etapa, TO_DATE(:fecha, 'YYYY-MM-DD'))";
     $stid = oci_parse($conn, $sql);
@@ -57,13 +72,14 @@ if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $etapa && $fe
 
     // Ejecutar la consulta
     if (oci_execute($stid)) {
-        echo "Nuevo registro creado exitosamente";
+        echo json_encode(['success' => true, 'message' => 'Nuevo registro creado exitosamente']);
     } else {
         $e = oci_error($stid);
-        echo "Error: " . $e['message'];
+        echo json_encode(['error' => 'Error: ' . $e['message']]);
     }
-} else {
-    echo "Error: Todos los campos son requeridos.";
+    oci_free_statement($stid);
+    oci_close($conn);
+    exit;
 }
 
 // Comprobar si se quiere actualizar un registro
@@ -76,11 +92,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     $etapa = $_POST['etapa'];
     $fecha = $_POST['fecha'];
 
+    // Validar longitud de los campos
+    if (strlen($nombreLote) > 20) {
+        echo json_encode(['error' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
+        exit;
+    }
+    if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
+        echo json_encode(['error' => 'La cifra debe tener un máximo de 3 números.']);
+        exit;
+    }
+
     $query = "UPDATE ANIMALES SET 
                 NOM_LOTE = :nombreLote, 
                 TIPO_ANIMAL = :tipoAnimal, 
                 CANTIDAD = :cantidad,
-                RAZAS = :raza, 
+                RAZA = :raza, 
                 ETAPA = :etapa, 
                 FECHA = TO_DATE(:fecha, 'YYYY-MM-DD') 
               WHERE ID_LOTE = :id";
@@ -98,16 +124,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     if ($result) {
         echo json_encode(['success' => true, 'message' => 'Registro actualizado correctamente.']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error al actualizar el registro.']);
+        $e = oci_error($stid);
+        echo json_encode(['success' => false, 'message' => 'Error al actualizar el registro: ' . $e['message']]);
     }
 
     oci_free_statement($stid);
     oci_close($conn);
     exit;
 }
-
-
-
 
 // Si no se envió un POST para eliminar o editar, obtener los datos
 $query = 'SELECT ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, ETAPA, TO_CHAR(FECHA, \'YYYY-MM-DD\') AS FECHA FROM ANIMALES ORDER BY ID_LOTE';
@@ -125,3 +149,4 @@ oci_close($conn);
 // Respuesta en JSON
 header('Content-Type: application/json');
 echo json_encode($animales);
+?>
