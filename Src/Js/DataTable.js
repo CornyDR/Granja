@@ -10,14 +10,13 @@ $(document).ready(function() {
             { data: 'TIPO_ANIMAL' }, // Tipo de Animal
             { data: 'CANTIDAD' },    // Cantidad
             { data: 'RAZA' },        // Raza
-            { data: 'ETAPA' },       // Etapa
-            { data: 'FECHA' },       // Fecha
+            { data: 'FECHA_ENTRADA' }, // Fecha de Entrada
+            { data: 'FECHA_SALIDA' },  // Fecha de Salida
             { 
                 data: null, 
                 render: function(data, type, row) {
                     return `
-                        <button class="editBtn" data-id="${row.ID_LOTE}">✏️ Editar</button>
-                        <button class="deleteBtn" data-id="${row.ID_LOTE}">🗑️ Eliminar</button>
+                        
                     `;
                 } 
             }
@@ -60,8 +59,8 @@ $(document).ready(function() {
         $('#tipoAnimal').val(rowData.TIPO_ANIMAL);
         $('#cantidad').val(rowData.CANTIDAD);
         $('#raza').val(rowData.RAZA);
-        $('#etapa').val(rowData.ETAPA);
-        $('#fechaEntrada').val(rowData.FECHA);
+        $('#fechaEntrada').val(rowData.FECHA_ENTRADA);
+        $('#fechaSalida').val(rowData.FECHA_SALIDA);
         $('#myForm').data('edit-id', id);
 
         // Mostrar modal de edición
@@ -80,8 +79,8 @@ $(document).ready(function() {
                 tipo_animal: $('#tipoAnimal').val(),
                 cantidad: $('#cantidad').val(),
                 raza: $('#raza').val(),
-                etapa: $('#etapa').val(),
-                fecha: $('#fechaEntrada').val()
+                fechaEntrada: $('#fechaEntrada').val(),
+                fechaSalida: $('#fechaSalida').val()
             };
 
             $.post('/Src/Php/BD_Animales.php', formData, function(response) {

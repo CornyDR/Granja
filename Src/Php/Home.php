@@ -56,28 +56,9 @@
                             <span class="title">Seguimiento</span>
                         </a>
                     </li>
-
-                    <!-- <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="trending-up-outline"></ion-icon>                            
-                            </span>
-                            <span class="title">Inversión</span>
-                        </a>
-                    </li>
     
                     <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="settings-outline"></ion-icon>
-                            </span>
-                            <span class="title">Ajustes</span>
-                        </a>
-                    </li> -->
-    
-    
-                    <li>
-                        <a href="/index.php">
+                        <a href="#" id="logoutBtn">
                             <span class="icon">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
@@ -96,15 +77,6 @@
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
-
-            <!-- <div class="Exit">
-                <a href="/index.php">
-                    <span class="icon">
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </span>
-                    <span class="title">Salir</span>
-                </a>
-            </div> -->
         </div>
 
         <!-- ======================= Tarjetas ================== -->
@@ -161,6 +133,23 @@
         <script src="/Src/Js/Home.js"></script>
         <script src="/Src/Js/prueba2.js"></script>
         <script src="/Src/Js/prueba22.js"></script>
+        <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('¿Estás seguro de que deseas salir?')) {
+                // Limpiar la sesión o cualquier dato de autenticación
+                sessionStorage.clear();
+                localStorage.clear();
+                // Redirigir al usuario a la página de inicio de sesión
+                window.location.href = '/index.php';
+            }
+        });
+
+        // Evitar que el usuario regrese a la página anterior después de cerrar sesión
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 
 </body>
 </html>

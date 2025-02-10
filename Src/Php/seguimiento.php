@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Src/Css/Home.css">
     <link rel="stylesheet" href="/Src/Css/Animales.css">
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="/Src/Js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
@@ -101,7 +100,7 @@
                 </div>
             </div>
             <div class="container-nav">
-            <table id="example" class=" hover row-border" style="width:100%">
+            <table id="example" class="hover row-border" style="width:100%">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -115,17 +114,19 @@
                     </tr>
                 </thead>
                     <tbody id="tableBody">
-                        <td>1</td>
-                        <td>200</td>
-                        <td>Secretary</td>
-                        <td>Pollo</td>
-                        <td>Engorde</td>
-                        <td>Crecimiento</td>
-                        <td>2010-02-12</td>
-                        <td>
-                            <button class="uniBtn" onclick="openEditModal()">Editar</button>
-                            <button class="uniBtn1">Eliminar</button>
-                        </td>
+                        <tr>
+                            <td>1</td>
+                            <td>200</td>
+                            <td>Secretary</td>
+                            <td>Pollo</td>
+                            <td>Engorde</td>
+                            <td>2010-02-12</td>
+                            <td>2010-02-20</td>
+                            <td>
+                                <button class="uniBtn" onclick="openEditModal()">Editar</button>
+                                <button class="uniBtn1" onclick="deleteRecord(1)">Eliminar</button>
+                            </td>
+                        </tr>
                     </tbody>
             </table>
             </div>
@@ -143,16 +144,6 @@
                                     <label>Cifra:</label>
                                     <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
                                 </div>
-
-                                <div class="form_control">
-                                        <label>Etapa:</label>
-                                        <select id="Etapa" name="Etapa" required>
-                                            <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <option value="Etapa">Crecimiento</option>
-                                            <option value="Etapa">Desarollo</option>
-                                            <option value="Etapa">Venta</option>
-                                        </select>
-                                    </div>
 
                                 <div class="form_control">
                                     <label>Fecha:</label>
@@ -188,17 +179,50 @@
         }
 
         function saveChanges() {
-            // Logic to save changes goes here
-            // For example, you might want to gather data from the form and send it to the server
             const cantidad = document.getElementById('editCantidad').value;
-            const etapa = document.getElementById('Etapa').value;
             const fecha = document.getElementById('editFecha').value;
 
-            // Here you would typically send this data to the server via AJAX or a form submission
-            console.log('Saving changes:', { cantidad, etapa, fecha });
+            // Aquí enviarías los datos al servidor mediante AJAX
+            $.ajax({
+                url: '/Src/Php/BD_Animales.php',
+                type: 'POST',
+                data: {
+                    cantidad: cantidad,
+                    fecha: fecha
+                },
+                dataType: 'json',
+                success: function(response) {
+                    alert(response.message);
+                    if (response.success) {
+                        $('#editForm')[0].reset();
+                        closeEditModal();
+                        $('#example').DataTable().ajax.reload();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        }
 
-            // Close the modal after saving
-            closeEditModal();
+        function deleteRecord(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este registro?')) {
+                $.ajax({
+                    url: '/Src/Php/BD_Animales.php',
+                    type: 'POST',
+                    data: { eliminar_id: id },
+                    dataType: 'json',
+                    success: function(response) {
+                        alert(response.message);
+                        if (response.success) {
+                            $('#example').DataTable().ajax.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + error);
+                    }
+                });
+            }
         }
     </script>
     <script src="/Src/Js/Home.js"></script>

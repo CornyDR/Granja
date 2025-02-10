@@ -3,6 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+header('Content-Type: application/json');
+
 // Configuración de conexión a Oracle
 $USUARIOBD = 'SYSTEM';
 $claveBD = '123456';
@@ -12,7 +14,7 @@ $conn = oci_connect($USUARIOBD, $claveBD, $host);
 
 if (!$conn) {
     $e = oci_error();
-    echo json_encode(['error' => 'Error de conexión: ' . $e['message']]);
+    echo json_encode(['success' => false, 'message' => 'Error de conexión: ' . $e['message']]);
     exit;
 }
 
@@ -42,23 +44,23 @@ $nombreLote = isset($_POST['nombreLote']) ? $_POST['nombreLote'] : null;
 $tipoAnimal = isset($_POST['tipoAnimal']) ? $_POST['tipoAnimal'] : null;
 $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : null;
 $raza = isset($_POST['raza']) ? $_POST['raza'] : null;
-$etapa = isset($_POST['etapa']) ? $_POST['etapa'] : null;
-$fecha = isset($_POST['fecha']) ? $_POST['fecha'] : null;
+$fechaEntrada = isset($_POST['fechaEntrada']) ? $_POST['fechaEntrada'] : null;
+$fechaSalida = isset($_POST['fechaSalida']) ? $_POST['fechaSalida'] : null;
 
 // Validar que todos los campos requeridos están presentes
-if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $etapa && $fecha) {
+if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $fechaEntrada && $fechaSalida) {
     // Validar longitud de los campos
     if (strlen($nombreLote) > 20) {
-        echo json_encode(['error' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
+        echo json_encode(['success' => false, 'message' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
         exit;
     }
     if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
-        echo json_encode(['error' => 'La cifra debe tener un máximo de 3 números.']);
+        echo json_encode(['success' => false, 'message' => 'La cifra debe tener un máximo de 3 números.']);
         exit;
     }
 
     // Preparar la consulta SQL
-    $sql = "INSERT INTO ANIMALES (ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, ETAPA, FECHA) VALUES (:idLote, :nombreLote, :tipoAnimal, :cantidad, :raza, :etapa, TO_DATE(:fecha, 'YYYY-MM-DD'))";
+    $sql = "INSERT INTO ANIMALES (ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, FECHA_ENTRADA, FECHA_SALIDA) VALUES (:idLote, :nombreLote, :tipoAnimal, :cantidad, :raza, TO_DATE(:fechaEntrada, 'YYYY-MM-DD'), TO_DATE(:fechaSalida, 'YYYY-MM-DD'))";
     $stid = oci_parse($conn, $sql);
 
     // Vincular los parámetros
@@ -67,15 +69,15 @@ if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $etapa && $fe
     oci_bind_by_name($stid, ':tipoAnimal', $tipoAnimal);
     oci_bind_by_name($stid, ':cantidad', $cantidad);
     oci_bind_by_name($stid, ':raza', $raza);
-    oci_bind_by_name($stid, ':etapa', $etapa);
-    oci_bind_by_name($stid, ':fecha', $fecha);
+    oci_bind_by_name($stid, ':fechaEntrada', $fechaEntrada);
+    oci_bind_by_name($stid, ':fechaSalida', $fechaSalida);
 
     // Ejecutar la consulta
     if (oci_execute($stid)) {
         echo json_encode(['success' => true, 'message' => 'Nuevo registro creado exitosamente']);
     } else {
         $e = oci_error($stid);
-        echo json_encode(['error' => 'Error: ' . $e['message']]);
+        echo json_encode(['success' => false, 'message' => 'Error: ' . $e['message']]);
     }
     oci_free_statement($stid);
     oci_close($conn);
@@ -89,16 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     $tipoAnimal = $_POST['tipo_animal'];
     $cantidad = $_POST['cantidad'];
     $raza = $_POST['raza'];
-    $etapa = $_POST['etapa'];
-    $fecha = $_POST['fecha'];
+    $fechaEntrada = $_POST['fechaEntrada'];
+    $fechaSalida = $_POST['fechaSalida'];
 
     // Validar longitud de los campos
     if (strlen($nombreLote) > 20) {
-        echo json_encode(['error' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
+        echo json_encode(['success' => false, 'message' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
         exit;
     }
     if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
-        echo json_encode(['error' => 'La cifra debe tener un máximo de 3 números.']);
+        echo json_encode(['success' => false, 'message' => 'La cifra debe tener un máximo de 3 números.']);
         exit;
     }
 
@@ -107,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
                 TIPO_ANIMAL = :tipoAnimal, 
                 CANTIDAD = :cantidad,
                 RAZA = :raza, 
-                ETAPA = :etapa, 
-                FECHA = TO_DATE(:fecha, 'YYYY-MM-DD') 
+                FECHA_ENTRADA = TO_DATE(:fechaEntrada, 'YYYY-MM-DD'),
+                FECHA_SALIDA = TO_DATE(:fechaSalida, 'YYYY-MM-DD')
               WHERE ID_LOTE = :id";
 
     $stid = oci_parse($conn, $query);
@@ -116,8 +118,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     oci_bind_by_name($stid, ':tipoAnimal', $tipoAnimal);
     oci_bind_by_name($stid, ':cantidad', $cantidad);
     oci_bind_by_name($stid, ':raza', $raza);
-    oci_bind_by_name($stid, ':etapa', $etapa);
-    oci_bind_by_name($stid, ':fecha', $fecha);
+    oci_bind_by_name($stid, ':fechaEntrada', $fechaEntrada);
+    oci_bind_by_name($stid, ':fechaSalida', $fechaSalida);
     oci_bind_by_name($stid, ':id', $id);
     $result = oci_execute($stid);
 
@@ -134,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
 }
 
 // Si no se envió un POST para eliminar o editar, obtener los datos
-$query = 'SELECT ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, ETAPA, TO_CHAR(FECHA, \'YYYY-MM-DD\') AS FECHA FROM ANIMALES ORDER BY ID_LOTE';
+$query = 'SELECT ID_LOTE, NOM_LOTE, TIPO_ANIMAL, CANTIDAD, RAZA, TO_CHAR(FECHA_ENTRADA, \'YYYY-MM-DD\') AS FECHA_ENTRADA, TO_CHAR(FECHA_SALIDA, \'YYYY-MM-DD\') AS FECHA_SALIDA FROM ANIMALES ORDER BY ID_LOTE';
 $stid = oci_parse($conn, $query);
 oci_execute($stid);
 
@@ -147,6 +149,5 @@ oci_free_statement($stid);
 oci_close($conn);
 
 // Respuesta en JSON
-header('Content-Type: application/json');
 echo json_encode($animales);
 ?>

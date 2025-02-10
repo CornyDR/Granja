@@ -76,6 +76,9 @@
             <div class="addMemberBtn">
                 <button>Ingresar</button>
             </div>
+            <div class="addMemberBtn">
+                <a href="/Src/Php/Generar_reporte.php" target="_blank"><button>Generar PDF</button></a>
+            </div>
             <table id="example" class=" hover row-border" style="width:100%">
             <thead>
                 <tr>
@@ -86,7 +89,6 @@
                     <th>Raza</th>
                     <th>Fecha Entrada</th>
                     <th>Fecha Salida</th>
-                    <th>Opciones</th>
                 </tr>
             </thead>
                 <tbody id="tableBody">
@@ -109,12 +111,14 @@
                     <div class="body">
                         <form id="myForm">
                             <div class="inputFieldContainer">
-        
+                                    <div class="form_control">
+                                        <label>ID Lote:</label>
+                                        <input type="text" name="idLote" id="idLote" required>
+                                    </div>
                                     <div class="form_control">
                                         <label>Nombre del Lote:</label>
                                         <input type="text" name="nombreLote" id="nombreLote" maxlength="20" required>
                                     </div>
-        
                                     <div class="form_control">
                                         <label>Tipo de Animal:</label>
                                         <select id="tipoAnimal" name="tipoAnimal" required onchange="updateRaza()">
@@ -124,19 +128,16 @@
                                             <option value="chivo">Chivo</option>
                                         </select>
                                     </div>
-                                    
                                     <div class="form_control">
                                         <label>Raza:</label>
                                         <select id="raza" name="raza" required>
                                             <option value="" disabled selected>-- Selecciona una opción --</option>
                                         </select>
                                     </div>
-
                                     <div class="form_control">
                                         <label>Cifra:</label>
                                         <input type="number" name="cantidad" id="cantidad" required pattern="\d{1,3}" oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);">
                                     </div>
-
                                     <div class="form_control">
                                         <label>Fecha de Entrada:</label>
                                         <input type="date" name="fechaEntrada" id="fechaEntrada" required>
@@ -145,7 +146,6 @@
                                         <label>Fecha de Salida:</label>
                                         <input type="date" name="fechaSalida" id="fechaSalida" required>
                                     </div>
-                                
                             </div>
                         </form>
                     </div>
@@ -161,5 +161,39 @@
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/DataTable.js"></script>
     <script src="/Src/Js/regis.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#registrarBtn').on('click', function(e) {
+                e.preventDefault();
+                let formData = {
+                    idLote: $('#idLote').val(),
+                    nombreLote: $('#nombreLote').val(),
+                    tipoAnimal: $('#tipoAnimal').val(),
+                    cantidad: $('#cantidad').val(),
+                    raza: $('#raza').val(),
+                    fechaEntrada: $('#fechaEntrada').val(),
+                    fechaSalida: $('#fechaSalida').val()
+                };
+
+                $.ajax({
+                    url: '/Src/Php/BD_Animales.php',
+                    type: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    success: function(response) {
+                        alert(response.message);
+                        if (response.success) {
+                            $('#myForm')[0].reset();
+                            $('.dark_bg').fadeOut();
+                            $('#example').DataTable().ajax.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
