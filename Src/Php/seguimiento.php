@@ -114,7 +114,7 @@
                     </tr>
                 </thead>
                     <tbody id="tableBody">
-                        <tr>
+                        <!-- <tr>
                             <td>1</td>
                             <td>200</td>
                             <td>Secretary</td>
@@ -126,7 +126,7 @@
                                 <button class="uniBtn" onclick="openEditModal()">Editar</button>
                                 <button class="uniBtn1" onclick="deleteRecord(1)">Eliminar</button>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
             </table>
             </div>
@@ -134,7 +134,7 @@
                 <div class="popup1">
                     <header>
                         <h2 class="modalTitle1">Agregar/Editar Mercancía</h2>
-                        <button class="closeBtn1" onclick="closeEditModal()">&times;</button>
+                        <button class="closeBtn1" onclick="closeEditModal2()">&times;</button>
                     </header>
 
                     <div class="body">

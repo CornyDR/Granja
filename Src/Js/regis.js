@@ -93,12 +93,12 @@ function updateP() {
 //     form.reset();
 // });
 
-function openIngresar(){
+function openIngresar1(){
     darkBg.classList.add('active')
     popupForm.classList.add('active')
 }
 
-function closeBtn(){
+function closeBtn1(){
     darkBg.classList.remove('active')
     popupForm.classList.remove('active')
     form.reset()
