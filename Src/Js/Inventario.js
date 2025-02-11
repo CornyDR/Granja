@@ -1,3 +1,18 @@
+// Selección de elementos del DOM
+var newMemberAddBtn = document.querySelector('.addMemberBtn'),
+darkBg = document.querySelector('.dark_bg'),
+darkBg1 = document.querySelector('.dark_bg1'),
+popupForm = document.querySelector('.popup'),
+popupForm1 = document.querySelector('.popup1'),
+crossBtn = document.querySelector('.closeBtn'),
+crossBtn1 = document.querySelector('.closeBtn1'),
+submitBtn = document.querySelector('.submitBtn'),
+modalTitle = document.querySelector('.modalTitle'),
+modalTitle1 = document.querySelector('.modalTitle1'),
+popupFooter = document.querySelector('.popupFooter'),
+popupFooter1 = document.querySelector('.popupFooter1'),
+form = document.querySelector('form')
+
 $(document).ready(function () {
     // Inicializar DataTable con el ID correcto #storage
     new DataTable('#storage', {
@@ -151,25 +166,28 @@ function updateP() {
     }
 }
 
-// Función para abrir el modal de ingreso
-function openIngresar() {
-    document.querySelector('.dark_bg').classList.add('active');
-    document.querySelector('.popup').classList.add('active');
+function openIngresar(){
+    darkBg.classList.add('active')
+    popupForm.classList.add('active')
 }
 
-// Función para cerrar el modal de ingreso
-function closeBtn() {
-    document.querySelector('.dark_bg').classList.remove('active');
-    document.querySelector('.popup').classList.remove('active');
-    document.getElementById('myForm').reset();
+function closeBtn(){
+    darkBg.classList.remove('active')
+    popupForm.classList.remove('active')
+    form.reset()
 }
 
-// Función para cerrar el modal de edición
+function openEditModal() {
+
+    darkBg1.classList.add('active');
+    popupForm1.classList.add('active');
+}
 function closeEditModal() {
-    $('.dark_bg1').removeClass('active');
-    $('.popup1').removeClass('active');
-    document.getElementById('editForm').reset();
+    darkBg1.classList.remove('active');
+    popupForm1.classList.remove('active');
+    form.reset();
 }
+
 
 // Función para guardar los cambios de edición
 function saveChanges() {
