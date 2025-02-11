@@ -16,7 +16,7 @@ $(document).ready(function() {
                 data: null, 
                 render: function(data, type, row) {
                     return `
-                        <button class="editBtn" onclick="openEditModal2()"data-id="${row.ID_LOTE}">✏️ Editar</button>
+                        <button class="editBtn" onclick="openEditModal2()" data-id="${row.ID_LOTE}">✏️ Editar</button>
                         <button class="deleteBtn" data-id="${row.ID_LOTE}">🗑️ Eliminar</button>
                     `;
                 } 
@@ -56,39 +56,29 @@ $(document).ready(function() {
         let rowData = table.row($(this).parents('tr')).data();
 
         // Llenar formulario con datos
-        $('#nombreLote').val(rowData.NOM_LOTE);
-        $('#tipoAnimal').val(rowData.TIPO_ANIMAL);
-        $('#cantidad').val(rowData.CANTIDAD);
-        $('#raza').val(rowData.RAZA);
-        $('#fechaEntrada').val(rowData.FECHA_ENTRADA);
-        $('#fechaSalida').val(rowData.FECHA_SALIDA);
-        $('#myForm').data('edit-id', id);
+        $('#editCantidad').val(rowData.CANTIDAD);
+        $('#editForm').data('edit-id', id);
 
         // Mostrar modal de edición
-        $('.dark_bg').fadeIn();
+        $('.dark_bg1').fadeIn();
     });
 
     // Evento para guardar cambios de edición
     $('.submitBtn1').on('click', function(e) {
         e.preventDefault();
-        let id = $('#myForm').data('edit-id');
+        let id = $('#editForm').data('edit-id');
 
         if (id) {
             let formData = {
                 editar_id: id,
-                nom_lote: $('#nombreLote').val(),
-                tipo_animal: $('#tipoAnimal').val(),
-                cantidad: $('#cantidad').val(),
-                raza: $('#raza').val(),
-                fechaEntrada: $('#fechaEntrada').val(),
-                fechaSalida: $('#fechaSalida').val()
+                cantidad: $('#editCantidad').val()
             };
 
             $.post('/Src/Php/BD_Animales.php', formData, function(response) {
                 if (response.success) {
                     alert('Registro actualizado correctamente');
                     table.ajax.reload();
-                    $('.dark_bg').fadeOut();
+                    $('.dark_bg1').fadeOut();
                 } else {
                     alert('Error al actualizar el registro');
                 }

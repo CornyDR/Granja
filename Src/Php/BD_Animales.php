@@ -87,39 +87,20 @@ if ($idLote && $nombreLote && $tipoAnimal && $cantidad && $raza && $fechaEntrada
 // Comprobar si se quiere actualizar un registro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
     $id = $_POST['editar_id'];
-    $nombreLote = $_POST['nom_lote'];
-    $tipoAnimal = $_POST['tipo_animal'];
     $cantidad = $_POST['cantidad'];
-    $raza = $_POST['raza'];
-    $fechaEntrada = $_POST['fechaEntrada'];
-    $fechaSalida = $_POST['fechaSalida'];
 
     // Validar longitud de los campos
-    if (strlen($nombreLote) > 20) {
-        echo json_encode(['success' => false, 'message' => 'El nombre del lote debe tener un máximo de 20 caracteres.']);
-        exit;
-    }
     if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
         echo json_encode(['success' => false, 'message' => 'La cifra debe tener un máximo de 3 números.']);
         exit;
     }
 
     $query = "UPDATE ANIMALES SET 
-                NOM_LOTE = :nombreLote, 
-                TIPO_ANIMAL = :tipoAnimal, 
-                CANTIDAD = :cantidad,
-                RAZA = :raza, 
-                FECHA_ENTRADA = TO_DATE(:fechaEntrada, 'YYYY-MM-DD'),
-                FECHA_SALIDA = TO_DATE(:fechaSalida, 'YYYY-MM-DD')
+                CANTIDAD = :cantidad
               WHERE ID_LOTE = :id";
 
     $stid = oci_parse($conn, $query);
-    oci_bind_by_name($stid, ':nombreLote', $nombreLote);
-    oci_bind_by_name($stid, ':tipoAnimal', $tipoAnimal);
     oci_bind_by_name($stid, ':cantidad', $cantidad);
-    oci_bind_by_name($stid, ':raza', $raza);
-    oci_bind_by_name($stid, ':fechaEntrada', $fechaEntrada);
-    oci_bind_by_name($stid, ':fechaSalida', $fechaSalida);
     oci_bind_by_name($stid, ':id', $id);
     $result = oci_execute($stid);
 

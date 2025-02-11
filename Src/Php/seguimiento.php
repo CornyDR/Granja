@@ -134,7 +134,7 @@
                 <div class="popup1">
                     <header>
                         <h2 class="modalTitle1">Agregar/Editar Mercancía</h2>
-                        <button class="closeBtn1" onclick="closeEditModal2()">&times;</button>
+                        <button class="closeBtn1" onclick="closeEditModal()">&times;</button>
                     </header>
 
                     <div class="body">
@@ -143,11 +143,6 @@
                                 <div class="form_control">
                                     <label>Cifra:</label>
                                     <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
-                                </div>
-
-                                <div class="form_control">
-                                    <label>Fecha:</label>
-                                    <input type="date" id="editFecha" required>
                                 </div>
                             </div>
                         </form>
@@ -158,12 +153,7 @@
                     </footer>
                 </div>
             </div>
-
-
-            
-    </div>
-                
-  
+        </div>
     </header>
 
     <!-- ====== ionicons ======= -->
@@ -180,7 +170,6 @@
 
         function saveChanges() {
             const cantidad = document.getElementById('editCantidad').value;
-            const fecha = document.getElementById('editFecha').value;
 
             // Aquí enviarías los datos al servidor mediante AJAX
             $.ajax({
@@ -188,7 +177,6 @@
                 type: 'POST',
                 data: {
                     cantidad: cantidad,
-                    fecha: fecha
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -228,7 +216,5 @@
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/Seguimiento.js"></script>
     <script src="/Src/Js/regis.js"></script>
-     
-
 </body>
 </html>
