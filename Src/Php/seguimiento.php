@@ -170,17 +170,21 @@
 
         function saveChanges() {
             const cantidad = document.getElementById('editCantidad').value;
+            const id = $('#editForm').data('edit-id');
 
             // Aquí enviarías los datos al servidor mediante AJAX
             $.ajax({
                 url: '/Src/Php/BD_Animales.php',
                 type: 'POST',
                 data: {
+                    editar_id: id,
                     cantidad: cantidad,
                 },
                 dataType: 'json',
                 success: function(response) {
-                    alert(response.message);
+                    if (response.message) {
+                        alert(response.message);
+                    }
                     if (response.success) {
                         $('#editForm')[0].reset();
                         closeEditModal();
@@ -201,7 +205,9 @@
                     data: { eliminar_id: id },
                     dataType: 'json',
                     success: function(response) {
-                        alert(response.message);
+                        if (response.message) {
+                            alert(response.message);
+                        }
                         if (response.success) {
                             $('#example').DataTable().ajax.reload();
                         }

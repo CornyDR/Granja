@@ -75,10 +75,13 @@ $(document).ready(function() {
             };
 
             $.post('/Src/Php/BD_Animales.php', formData, function(response) {
+                if (response.message) {
+                    alert(response.message);
+                }
                 if (response.success) {
-                    alert('Registro actualizado correctamente');
-                    table.ajax.reload();
+                    $('#editForm')[0].reset();
                     $('.dark_bg1').fadeOut();
+                    table.ajax.reload();
                 } else {
                     alert('Error al actualizar el registro');
                 }
