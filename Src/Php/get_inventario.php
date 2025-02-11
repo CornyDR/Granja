@@ -48,6 +48,34 @@ switch ($accion) {
         }
         break;
 
+    case 'insertar': // Insertar un nuevo registro
+        if (isset($_POST['nombreProducto'], $_POST['categoria'], $_POST['cantidad'], $_POST['unidad'], $_POST['fecha'])) {
+            $nombreProducto = $_POST['nombreProducto'];
+            $categoria = $_POST['categoria'];
+            $cantidad = $_POST['cantidad'];
+            $unidad = $_POST['unidad'];
+            $fecha = $_POST['fecha'];
+
+            $sql = "INSERT INTO inventario (producto, categoria, cantidad, unidad, fecha) VALUES (:nombreProducto, :categoria, :cantidad, :unidad, TO_DATE(:fecha, 'YYYY-MM-DD'))";
+            $stmt = oci_parse($conn, $sql);
+            oci_bind_by_name($stmt, ":nombreProducto", $nombreProducto);
+            oci_bind_by_name($stmt, ":categoria", $categoria);
+            oci_bind_by_name($stmt, ":cantidad", $cantidad);
+            oci_bind_by_name($stmt, ":unidad", $unidad);
+            oci_bind_by_name($stmt, ":fecha", $fecha);
+            $resultado = oci_execute($stmt);
+
+            if ($resultado) {
+                echo json_encode(["success" => "Registro insertado correctamente"]);
+            } else {
+                $e = oci_error($stmt);
+                echo json_encode(["error" => "Error al insertar el registro: " . $e['message']]);
+            }
+        } else {
+            echo json_encode(["error" => "Datos incompletos"]);
+        }
+        break;
+
     case 'eliminar': // Eliminar un registro por ID
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
@@ -59,7 +87,8 @@ switch ($accion) {
             if ($resultado) {
                 echo json_encode(["success" => "Registro eliminado correctamente"]);
             } else {
-                echo json_encode(["error" => "Error al eliminar el registro"]);
+                $e = oci_error($stmt);
+                echo json_encode(["error" => "Error al eliminar el registro: " . $e['message']]);
             }
         } else {
             echo json_encode(["error" => "ID no recibido"]);

@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Src/Css/Home.css">
     <link rel="stylesheet" href="/Src/Css/Animales.css">
-
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <script src="/Src/Js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.1/js/dataTables.js"></script>
-    
     <title>Los Santos</title>
 </head>
 <body>
     <header>
         <!-- ====== Menu ====== -->
-         <div class="container">
+        <div class="container">
             <div class="navegacion">
                 <ul>
                     <li>
@@ -26,7 +24,6 @@
                             <span class="title1">Granja Los Santos</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="/Src/Php/Home.php">
                             <span class="icon">
@@ -35,7 +32,6 @@
                             <span class="title">Inicio</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="/Src/Php/Animale.php">
                             <span class="icon">
@@ -44,7 +40,6 @@
                             <span class="title">Animales</span>
                         </a>
                     </li>
-    
                     <li>
                         <a href="/Src/Php/Inventario.php">
                             <span class="icon">
@@ -53,7 +48,6 @@
                             <span class="title">Inventario</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="/Src/Php/seguimiento.php">
                             <span class="icon">
@@ -62,27 +56,8 @@
                             <span class="title">Seguimiento</span>
                         </a>
                     </li>
-
-                    <!-- <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="trending-up-outline"></ion-icon>                            
-                            </span>
-                            <span class="title">Inversión</span>
-                        </a>
-                    </li>
-    
                     <li>
-                        <a href="#">
-                            <span class="icon">
-                                <ion-icon name="settings-outline"></ion-icon>
-                            </span>
-                            <span class="title">Ajustes</span>
-                        </a>
-                    </li> -->
-    
-                    <li>
-                        <a href="/index.php">
+                        <a href="/index.php" id="logoutBtn">
                             <span class="icon">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
@@ -100,54 +75,40 @@
                 </div>
             </div>
             <div class="container-nav">
-            <div class="addMemberBtn">
-                <button onclick="openIngresar()">Ingresar</button>
-            </div>
-            <table id="storage" class=" hover row-border" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Categoria</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Fecha</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-                <tbody id="tableBody">
-                <td>1</td>
-                        <!-- <td>200</td>
-                        <td>Secretary</td>
-                        <td>Pollo</td>
-                        <td>Engorde</td>
-                        <td>Crecimiento</td>
-                        <td>2010-02-12</td>
-                        <td>
-                            <button class="uniBtn" onclick="openEditModal()">Editar</button>
-                            <button class="uniBtn1">Eliminar</button>
-                        </td> -->
-                </tbody>
-            </table>
+                <div class="addMemberBtn">
+                    <button onclick="openIngresar()">Ingresar</button>
+                </div>
+                <table id="storage" class="hover row-border" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Producto</th>
+                            <th>Categoria</th>
+                            <th>Cantidad</th>
+                            <th>Fecha</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Los datos se cargarán dinámicamente -->
+                    </tbody>
+                </table>
             </div>
 
             <div class="dark_bg">
-        
                 <div class="popup">
-                     <header>
+                    <header>
                         <h2 class="modalTitle">Ingresar Mercancia</h2>
                         <button class="closeBtn" onclick="closeBtn()">&times;</button>
-                     </header>
-        
-                     <div class="body">
+                    </header>
+                    <div class="body">
                         <form action="#" id="myForm">
                             <div class="inputFieldContainer">
-        
                                 <div class="nameField">
                                     <div class="form_control">
                                         <label>Nombre del Producto:</label>
-                                        <input type="text" name="" id="fName" required>
+                                        <input type="text" name="nombreProducto" id="fName" required>
                                     </div>
-        
                                     <div class="form_control">
                                         <label>Categoria:</label>
                                         <select id="categoria" name="categoria" required onchange="updateP()">
@@ -156,10 +117,8 @@
                                             <option value="Alimentos">Alimentos</option>
                                             <option value="Herramientas">Herramientas</option>
                                         </select>
-                                        
                                     </div>
                                 </div>
-        
                                 <div class="ageCityField">
                                     <div class="form_control">
                                         <label>Producto:</label>
@@ -171,7 +130,6 @@
                                         <label for="cantidad">Cifra:</label>
                                         <input type="number" id="cifra" name="cifra" required placeholder="Ingrese la cantidad">
                                     </div>
-
                                     <div class="form_control">
                                         <label for="unidad">Cantidad:</label>
                                         <select id="unidad" name="unidad" required>
@@ -181,7 +139,6 @@
                                             <option value="gm">Gramos (Gm)</option>
                                         </select>
                                     </div>
-        
                                     <div class="form_control">
                                         <label>Fecha:</label>
                                         <input type="date" name="fecha" id="fecha" required>
@@ -189,13 +146,11 @@
                                 </div>
                             </div>
                         </form>
-                     </div>
-        
-                     <footer action="#" class="popupFooter" id="myForm">
+                    </div>
+                    <footer class="popupFooter">
                         <button form="myForm" class="submitBtn">Registrar</button>
-                     </footer>
+                    </footer>
                 </div>
-        
             </div>
 
             <div class="dark_bg1" id="editModal">
@@ -204,7 +159,6 @@
                         <h2 class="modalTitle1">Editar Mercancía</h2>
                         <button class="closeBtn1" onclick="closeEditModal()">&times;</button>
                     </header>
-
                     <div class="body">
                         <form id="editForm">
                             <div class="inputFieldContainer">
@@ -212,7 +166,6 @@
                                     <label>Nombre del Producto:</label>
                                     <input type="text" id="editProductName" required>
                                 </div>
-
                                 <div class="form_control">
                                     <label>Categoria:</label>
                                     <select id="editCategoria" required>
@@ -222,22 +175,19 @@
                                         <option value="Herramientas">Herramientas</option>
                                     </select>
                                 </div>
-
                                 <div class="form_control">
                                     <label>Cifra:</label>
                                     <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
                                 </div>
-
                                 <div class="form_control">
-                                        <label for="unidad">Cantidad:</label>
-                                        <select id="unidad" name="unidad" required>
-                                            <option value="" disabled selected>-- Selecciona una opción --</option>
-                                            <option value="unidad">Unidad</option>
-                                            <option value="kg">Kilogramos (Kg)</option>
-                                            <option value="gm">Gramos (Gm)</option>
-                                        </select>
-                                    </div>
-
+                                    <label for="unidad">Cantidad:</label>
+                                    <select id="editUnidad" name="unidad" required>
+                                        <option value="" disabled selected>-- Selecciona una opción --</option>
+                                        <option value="unidad">Unidad</option>
+                                        <option value="kg">Kilogramos (Kg)</option>
+                                        <option value="gm">Gramos (Gm)</option>
+                                    </select>
+                                </div>
                                 <div class="form_control">
                                     <label>Fecha:</label>
                                     <input type="date" id="editFecha" required>
@@ -245,18 +195,12 @@
                             </div>
                         </form>
                     </div>
-
                     <footer class="popupFooter1">
                         <button class="submitBtn1" onclick="saveChanges()">Guardar Cambios</button>
                     </footer>
                 </div>
             </div>
-
-
-            
-    </div>
-                
-  
+        </div>
     </header>
 
     <!-- ====== ionicons ======= -->
@@ -266,7 +210,22 @@
     <script src="/Src/Js/Home.js"></script>
     <script src="/Src/Js/Inventario.js"></script>
     <script src="/Src/Js/regis.js"></script>
-     
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('¿Estás seguro de que deseas salir?')) {
+                // Limpiar la sesión o cualquier dato de autenticación
+                sessionStorage.clear();
+                localStorage.clear();
+                // Redirigir al usuario a la página de inicio de sesión
+                window.location.href = '/index.php';
+            }
+        });
 
+        // Evitar que el usuario regrese a la página anterior después de cerrar sesión
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 </html>
