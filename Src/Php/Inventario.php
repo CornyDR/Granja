@@ -107,7 +107,7 @@
                                 <div class="nameField">
                                     <div class="form_control">
                                         <label>Nombre del Producto:</label>
-                                        <input type="text" name="nombreProducto" id="fName" required>
+                                        <input type="text" name="nombreProducto" id="fName" maxlength="20" required>
                                     </div>
                                     <div class="form_control">
                                         <label>Categoria:</label>
@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="form_control d-flex align-items-center">
                                         <label for="cantidad">Cifra:</label>
-                                        <input type="number" id="cifra" name="cifra" required placeholder="Ingrese la cantidad">
+                                        <input type="number" id="cifra" name="cifra" required pattern="\d{1,3}" oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);">
                                     </div>
                                     <div class="form_control">
                                         <label for="unidad">Cantidad:</label>
@@ -164,7 +164,7 @@
                             <div class="inputFieldContainer">
                                 <div class="form_control">
                                     <label>Nombre del Producto:</label>
-                                    <input type="text" id="editProductName" required>
+                                    <input type="text" id="editProductName" maxlength="20" required>
                                 </div>
                                 <div class="form_control">
                                     <label>Categoria:</label>
@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="form_control">
                                     <label>Cifra:</label>
-                                    <input type="number" id="editCantidad" required placeholder="Ingrese la cantidad">
+                                    <input type="number" id="editCantidad" required pattern="\d{1,3}" oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);">
                                 </div>
                                 <div class="form_control">
                                     <label for="unidad">Cantidad:</label>

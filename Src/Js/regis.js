@@ -1,14 +1,19 @@
 // Selección de elementos del DOM
 var newMemberAddBtn = document.querySelector('.addMemberBtn'),
-    darkBg = document.querySelector('.dark_bg'),
-    popupForm = document.querySelector('.popup'),
-    crossBtn = document.querySelector('.closeBtn'),
-    submitBtn = document.querySelector('.submitBtn'),
-    modalTitle = document.querySelector('.modalTitle'),
-    popupFooter = document.querySelector('.popupFooter'),
-    form = document.querySelector('form'),
-    formInputFields = document.querySelectorAll('form input'),
-    uploadimg = document.querySelector("#uploadimg");
+darkBg = document.querySelector('.dark_bg'),
+darkBg1 = document.querySelector('.dark_bg1'),
+popupForm = document.querySelector('.popup'),
+popupForm1 = document.querySelector('.popup1'),
+crossBtn = document.querySelector('.closeBtn'),
+crossBtn1 = document.querySelector('.closeBtn1'),
+submitBtn = document.querySelector('.submitBtn'),
+modalTitle = document.querySelector('.modalTitle'),
+modalTitle1 = document.querySelector('.modalTitle1'),
+popupFooter = document.querySelector('.popupFooter'),
+popupFooter1 = document.querySelector('.popupFooter1'),
+form = document.querySelector('form'),
+form = document.querySelector('form1'),
+formInputFields = document.querySelectorAll('form input');
 
 // Datos de ejemplo: RAZA por tipo de animal
 const razasPorAnimal = {
