@@ -33,7 +33,7 @@ $(document).ready(function () {
                 data: null,
                 render: function(data, type, row) {
                     return `
-                        <button class="editBtn" onclick="openEditModal()" data-id="${row.ID}">✏️ Editar</button>
+                        <button class="editBtn" data-id="${row.ID}">✏️ Editar</button>
                         <button class="deleteBtn" data-id="${row.ID}">🗑️ Eliminar</button>
                     `;
                 }
