@@ -69,7 +69,7 @@ $(document).ready(function() {
     });
 
     // Evento para guardar cambios de edición
-    $('.submitBtn').on('click', function(e) {
+    $('.submitBtn1').on('click', function(e) {
         e.preventDefault();
         let id = $('#myForm').data('edit-id');
 
