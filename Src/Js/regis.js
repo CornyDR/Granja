@@ -104,12 +104,12 @@ function closeBtn(){
     form.reset()
 }
 
-function openEditModal() {
+function openEditModal2() {
 
     darkBg1.classList.add('active');
     popupForm1.classList.add('active');
 }
-function closeEditModal() {
+function closeEditModal2() {
     darkBg1.classList.remove('active');
     popupForm1.classList.remove('active');
     form.reset();
