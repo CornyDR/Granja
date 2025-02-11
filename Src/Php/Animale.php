@@ -74,7 +74,7 @@
             </div>
             <div class="container-nav">
             <div class="addMemberBtn">
-                <button onclick="openIngresar()" >Ingresar</button>
+                <button onclick="openIngresar1()" >Ingresar</button>
             </div>
             <div class="addMemberBtn">
                 <a href="/Src/Php/Generar_reporte.php" target="_blank"><button>Generar PDF</button></a>
