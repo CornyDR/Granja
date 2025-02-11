@@ -80,15 +80,37 @@ function updateP() {
     }
 }
 
-// Evento para abrir el formulario de ingreso
-newMemberAddBtn.addEventListener('click', () => {
-    darkBg.classList.add('active');
-    popupForm.classList.add('active');
-});
+// // Evento para abrir el formulario de ingreso
+// newMemberAddBtn.addEventListener('click', () => {
+//     darkBg.classList.add('active');
+//     popupForm.classList.add('active');
+// });
 
-// Evento para cerrar el formulario de ingreso
-crossBtn.addEventListener('click', () => {
-    darkBg.classList.remove('active');
-    popupForm.classList.remove('active');
+// // Evento para cerrar el formulario de ingreso
+// crossBtn.addEventListener('click', () => {
+//     darkBg.classList.remove('active');
+//     popupForm.classList.remove('active');
+//     form.reset();
+// });
+
+function openIngresar(){
+    darkBg.classList.add('active')
+    popupForm.classList.add('active')
+}
+
+function closeBtn(){
+    darkBg.classList.remove('active')
+    popupForm.classList.remove('active')
+    form.reset()
+}
+
+function openEditModal() {
+
+    darkBg1.classList.add('active');
+    popupForm1.classList.add('active');
+}
+function closeEditModal() {
+    darkBg1.classList.remove('active');
+    popupForm1.classList.remove('active');
     form.reset();
-});
+}
