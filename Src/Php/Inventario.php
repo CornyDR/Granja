@@ -40,14 +40,14 @@
                             <span class="title">Animales</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="/Src/Php/Inventario.php">
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
                             <span class="title">Inventario</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="/Src/Php/seguimiento.php">
                             <span class="icon">
@@ -85,6 +85,7 @@
                             <th>Producto</th>
                             <th>Categoria</th>
                             <th>Cantidad</th>
+                            <th>Unidad</th>
                             <th>Fecha</th>
                             <th>Opciones</th>
                         </tr>
@@ -105,6 +106,10 @@
                         <form action="#" id="myForm">
                             <div class="inputFieldContainer">
                                 <div class="nameField">
+                                    <div class="form_control">
+                                        <label>ID del Producto:</label>
+                                        <input type="text" name="idInventario" id="idInventario" maxlength="20" required>
+                                    </div>
                                     <div class="form_control">
                                         <label>Nombre del Producto:</label>
                                         <input type="text" name="nombreProducto" id="fName" maxlength="20" required>
@@ -163,30 +168,8 @@
                         <form id="editForm">
                             <div class="inputFieldContainer">
                                 <div class="form_control">
-                                    <label>Nombre del Producto:</label>
-                                    <input type="text" id="editProductName" maxlength="20" required>
-                                </div>
-                                <div class="form_control">
-                                    <label>Categoria:</label>
-                                    <select id="editCategoria" required>
-                                        <option value="" disabled selected>-- Selecciona una opción --</option>
-                                        <option value="Farmacos">Farmacos</option>
-                                        <option value="Alimentos">Alimentos</option>
-                                        <option value="Herramientas">Herramientas</option>
-                                    </select>
-                                </div>
-                                <div class="form_control">
-                                    <label>Cifra:</label>
+                                    <label>Cantidad:</label>
                                     <input type="number" id="editCantidad" required pattern="\d{1,3}" oninput="if(this.value.length > 3) this.value = this.value.slice(0, 3);">
-                                </div>
-                                <div class="form_control">
-                                    <label for="unidad">Cantidad:</label>
-                                    <select id="editUnidad" name="unidad" required>
-                                        <option value="" disabled selected>-- Selecciona una opción --</option>
-                                        <option value="unidad">Unidad</option>
-                                        <option value="kg">Kilogramos (Kg)</option>
-                                        <option value="gm">Gramos (Gm)</option>
-                                    </select>
                                 </div>
                                 <div class="form_control">
                                     <label>Fecha:</label>

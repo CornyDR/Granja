@@ -44,14 +44,14 @@
                         </a>
                     </li>
     
-                    <li>
+                    <!-- <li>
                         <a href="/Src/Php/Inventario.php">
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
                             <span class="title">Inventario</span>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li>
                         <a href="#">

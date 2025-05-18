@@ -39,14 +39,14 @@
                         </a>
                     </li>
     
-                    <li>
+                    <!-- <li>
                         <a href="/Src/Php/Inventario.php">
                             <span class="icon">
                                 <ion-icon name="map-outline"></ion-icon>                            
                             </span>
                             <span class="title">Inventario</span>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li>
                         <a href="/Src/Php/seguimiento.php">
@@ -99,14 +99,15 @@
 
             <div class="card">
                 <div class="iconBx">
-                    <a href="/Src/Php/Inventario.php">
-                        <div class="cardName">Inventario</div>
+                    <a href="/Src/Php/seguimiento.php">
+                        <div class="cardName">Seguimiento</div>
                     </a>
                 </div>
 
                 <div class="iconBx">
-                    <a href="/Src/Php/Inventario.php">
-                    <ion-icon name="map-outline"></ion-icon>
+                    <a href="/Src/Php/seguimiento.php">
+                    <ion-icon name="pulse-outline"></ion-icon>
+
                     </a>
                 </div>
 

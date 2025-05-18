@@ -28,23 +28,23 @@ $pdf->Ln(10); // Espacio después del título
 
 // Títulos de las columnas
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(15, 10, 'ID', 1, 0, 'C');
+$pdf->Cell(10, 10, 'ID', 1, 0, 'C');
 $pdf->Cell(35, 10, 'Nombre Lote', 1, 0, 'C');
 $pdf->Cell(30, 10, 'Tipo Animal', 1, 0, 'C');
 $pdf->Cell(25, 10, 'Cantidad', 1, 0, 'C');
-$pdf->Cell(27, 10, 'Raza', 1, 0, 'C');
-$pdf->Cell(35, 10, 'Fecha Entrada', 1, 0, 'C');
+$pdf->Cell(35, 10, 'Raza', 1, 0, 'C');
+$pdf->Cell(30, 10, 'Fecha Entrada', 1, 0, 'C');
 $pdf->Cell(30, 10, 'Fecha Salida', 1, 1, 'C');
 
 // Datos de la tabla
 $pdf->SetFont('Arial', '', 12);
 while ($row = oci_fetch_assoc($stid)) {
-    $pdf->Cell(15, 10, $row['ID_LOTE'], 1, 0, 'C');
+    $pdf->Cell(10, 10, $row['ID_LOTE'], 1, 0, 'C');
     $pdf->Cell(35, 10, $row['NOM_LOTE'], 1, 0, 'C');
     $pdf->Cell(30, 10, $row['TIPO_ANIMAL'], 1, 0, 'C');
     $pdf->Cell(25, 10, $row['CANTIDAD'], 1, 0, 'C');
-    $pdf->Cell(27, 10, $row['RAZA'], 1, 0, 'C');
-    $pdf->Cell(35, 10, $row['FECHA_ENTRADA'], 1, 0, 'C');
+    $pdf->Cell(35, 10, $row['RAZA'], 1, 0, 'C');
+    $pdf->Cell(30, 10, $row['FECHA_ENTRADA'], 1, 0, 'C');
     $pdf->Cell(30, 10, $row['FECHA_SALIDA'], 1, 1, 'C');
 }
 

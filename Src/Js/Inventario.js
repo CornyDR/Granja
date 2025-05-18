@@ -24,17 +24,18 @@ $(document).ready(function () {
             dataSrc: 'data',
         },
         columns: [
-            { data: 'ID' },
+            { data: 'ID_INVENTARIO' },
             { data: 'PRODUCTO' },
             { data: 'CATEGORIA' },
             { data: 'CANTIDAD' },
+            { data: 'UNIDAD' },
             { data: 'FECHA' },
             {
                 data: null,
                 render: function(data, type, row) {
                     return `
-                        <button class="editBtn" data-id="${row.ID}">✏️ Editar</button>
-                        <button class="deleteBtn" data-id="${row.ID}">🗑️ Eliminar</button>
+                        <button class="editBtn" data-id="${row.ID_INVENTARIO}">✏️ Editar</button>
+                        <button class="deleteBtn" data-id="${row.ID_INVENTARIO}">🗑️ Eliminar</button>
                     `;
                 }
             }
@@ -75,15 +76,12 @@ function openEditModal(id) {
     $.ajax({
         url: "/Src/Php/get_inventario.php",
         method: "POST",
-        data: { accion: "obtener", id: id },
+        data: { id: id },
         success: function (data) {
             let registro = JSON.parse(data);
-            $('#editProductName').val(registro.PRODUCTO);
-            $('#editCategoria').val(registro.CATEGORIA);
             $('#editCantidad').val(registro.CANTIDAD);
-            $('#editUnidad').val(registro.UNIDAD);
             $('#editFecha').val(registro.FECHA);
-            $('#editModal').data('id', id).show();
+            $('#editModal').data('id', id); // Asignar el ID al modal
             $('.dark_bg1').addClass('active');
             $('.popup1').addClass('active');
         }
@@ -96,10 +94,12 @@ function eliminarRegistro(id) {
         $.ajax({
             url: "/Src/Php/get_inventario.php",
             method: "POST",
-            data: { accion: "eliminar", id: id },
-            success: function () {
-                alert("Registro eliminado correctamente");
-                $('#storage').DataTable().ajax.reload(); // Actualiza la tabla después de eliminar
+            data: { eliminar_id: id },
+            success: function (response) {
+                alert(response.message);
+                if (response.success) {
+                    $('#storage').DataTable().ajax.reload(); // Actualiza la tabla después de eliminar
+                }
             },
             error: function () {
                 alert("Error al eliminar el registro");
@@ -110,17 +110,27 @@ function eliminarRegistro(id) {
 
 // Función para insertar un nuevo registro
 function insertarRegistro() {
+    const idInventario = $('#idInventario').val();
     const nombreProducto = $('#fName').val();
     const categoria = $('#categoria').val();
     const cantidad = $('#cifra').val();
     const unidad = $('#unidad').val();
     const fecha = $('#fecha').val();
 
+    console.log("Datos enviados para insertar:", {
+        id_inventario: idInventario,
+        nombreProducto: nombreProducto,
+        categoria: categoria,
+        cantidad: cantidad,
+        unidad: unidad,
+        fecha: fecha
+    });
+
     $.ajax({
         url: "/Src/Php/get_inventario.php",
         method: "POST",
         data: {
-            accion: "insertar",
+            id_inventario: idInventario,
             nombreProducto: nombreProducto,
             categoria: categoria,
             cantidad: cantidad,
@@ -189,26 +199,24 @@ function closeEditModal() {
     form.reset();
 }
 
-
 // Función para guardar los cambios de edición
 function saveChanges() {
     const id = $('#editModal').data('id');
-    const nombreProducto = document.getElementById('editProductName').value;
-    const categoria = document.getElementById('editCategoria').value;
     const cantidad = document.getElementById('editCantidad').value;
-    const unidad = document.getElementById('editUnidad').value;
     const fecha = document.getElementById('editFecha').value;
+
+    console.log("Datos enviados:", {
+        id: id,
+        cantidad: cantidad,
+        fecha: fecha
+    });
 
     $.ajax({
         url: '/Src/Php/get_inventario.php',
         type: 'POST',
         data: {
-            accion: "editar",
-            id: id,
-            nombreProducto: nombreProducto,
-            categoria: categoria,
+            editar_id: id,
             cantidad: cantidad,
-            unidad: unidad,
             fecha: fecha
         },
         dataType: 'json',

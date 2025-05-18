@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 header('Content-Type: application/json');
 
 // Configuración de conexión a Oracle
@@ -7,128 +11,140 @@ $claveBD = '123456';
 $host = 'localhost:1521/xe';
 
 $conn = oci_connect($USUARIOBD, $claveBD, $host);
+
 if (!$conn) {
     $e = oci_error();
-    echo json_encode(['error' => 'Error de conexión: ' . $e['message']]);
+    echo json_encode(['success' => false, 'message' => 'Error de conexión: ' . $e['message']]);
     exit;
 }
 
-// Verificamos la acción solicitada
-$accion = isset($_POST['accion']) ? $_POST['accion'] : 'listar';
+// Comprobar si se quiere eliminar un registro
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_id'])) {
+    $id = $_POST['eliminar_id'];
+    $query = 'DELETE FROM INVENTARIO WHERE ID_INVENTARIO = :id';
+    $stid = oci_parse($conn, $query);
+    oci_bind_by_name($stid, ':id', $id);
+    $result = oci_execute($stid);
 
-switch ($accion) {
-    case 'listar': // Obtener todos los registros
-        $sql = "SELECT * FROM inventario";
-        $stmt = oci_parse($conn, $sql);
-        oci_execute($stmt);
+    if ($result) {
+        echo json_encode(['success' => true, 'message' => 'Registro eliminado correctamente.']);
+    } else {
+        $e = oci_error($stid);
+        echo json_encode(['success' => false, 'message' => 'Error al eliminar el registro: ' . $e['message']]);
+    }
 
-        $inventario = [];
-        while ($row = oci_fetch_assoc($stmt)) {
-            $inventario[] = $row;
-        }
-
-        echo json_encode(['data' => $inventario]);
-        break;
-
-    case 'obtener': // Obtener un registro por ID
-        if (isset($_POST['id'])) {
-            $id = $_POST['id'];
-            $sql = "SELECT * FROM inventario WHERE id = :id";
-            $stmt = oci_parse($conn, $sql);
-            oci_bind_by_name($stmt, ":id", $id);
-            oci_execute($stmt);
-
-            if ($row = oci_fetch_assoc($stmt)) {
-                echo json_encode($row);
-            } else {
-                echo json_encode(["error" => "No se encontró el registro"]);
-            }
-        } else {
-            echo json_encode(["error" => "ID no recibido"]);
-        }
-        break;
-
-    case 'insertar': // Insertar un nuevo registro
-        if (isset($_POST['nombreProducto'], $_POST['categoria'], $_POST['cantidad'], $_POST['unidad'], $_POST['fecha'])) {
-            $nombreProducto = $_POST['nombreProducto'];
-            $categoria = $_POST['categoria'];
-            $cantidad = $_POST['cantidad'];
-            $unidad = $_POST['unidad'];
-            $fecha = $_POST['fecha'];
-
-            $sql = "INSERT INTO inventario (producto, categoria, cantidad, unidad, fecha) VALUES (:nombreProducto, :categoria, :cantidad, :unidad, TO_DATE(:fecha, 'YYYY-MM-DD'))";
-            $stmt = oci_parse($conn, $sql);
-            oci_bind_by_name($stmt, ":nombreProducto", $nombreProducto);
-            oci_bind_by_name($stmt, ":categoria", $categoria);
-            oci_bind_by_name($stmt, ":cantidad", $cantidad);
-            oci_bind_by_name($stmt, ":unidad", $unidad);
-            oci_bind_by_name($stmt, ":fecha", $fecha);
-            $resultado = oci_execute($stmt);
-
-            if ($resultado) {
-                echo json_encode(["success" => "Registro insertado correctamente"]);
-            } else {
-                $e = oci_error($stmt);
-                echo json_encode(["error" => "Error al insertar el registro: " . $e['message']]);
-            }
-        } else {
-            echo json_encode(["error" => "Datos incompletos"]);
-        }
-        break;
-
-    case 'editar': // Editar un registro por ID
-        if (isset($_POST['id'], $_POST['nombreProducto'], $_POST['categoria'], $_POST['cantidad'], $_POST['unidad'], $_POST['fecha'])) {
-            $id = $_POST['id'];
-            $nombreProducto = $_POST['nombreProducto'];
-            $categoria = $_POST['categoria'];
-            $cantidad = $_POST['cantidad'];
-            $unidad = $_POST['unidad'];
-            $fecha = $_POST['fecha'];
-
-            $sql = "UPDATE inventario SET producto = :nombreProducto, categoria = :categoria, cantidad = :cantidad, unidad = :unidad, fecha = TO_DATE(:fecha, 'YYYY-MM-DD') WHERE id = :id";
-            $stmt = oci_parse($conn, $sql);
-            oci_bind_by_name($stmt, ":id", $id);
-            oci_bind_by_name($stmt, ":nombreProducto", $nombreProducto);
-            oci_bind_by_name($stmt, ":categoria", $categoria);
-            oci_bind_by_name($stmt, ":cantidad", $cantidad);
-            oci_bind_by_name($stmt, ":unidad", $unidad);
-            oci_bind_by_name($stmt, ":fecha", $fecha);
-            $resultado = oci_execute($stmt);
-
-            if ($resultado) {
-                echo json_encode(["success" => "Registro actualizado correctamente"]);
-            } else {
-                $e = oci_error($stmt);
-                echo json_encode(["error" => "Error al actualizar el registro: " . $e['message']]);
-            }
-        } else {
-            echo json_encode(["error" => "Datos incompletos"]);
-        }
-        break;
-
-    case 'eliminar': // Eliminar un registro por ID
-        if (isset($_POST['id'])) {
-            $id = $_POST['id'];
-            $sql = "DELETE FROM inventario WHERE id = :id";
-            $stmt = oci_parse($conn, $sql);
-            oci_bind_by_name($stmt, ":id", $id);
-            $resultado = oci_execute($stmt);
-
-            if ($resultado) {
-                echo json_encode(["success" => "Registro eliminado correctamente"]);
-            } else {
-                $e = oci_error($stmt);
-                echo json_encode(["error" => "Error al eliminar el registro: " . $e['message']]);
-            }
-        } else {
-            echo json_encode(["error" => "ID no recibido"]);
-        }
-        break;
-
-    default:
-        echo json_encode(["error" => "Acción no válida"]);
-        break;
+    oci_free_statement($stid);
+    oci_close($conn);
+    exit;
 }
 
+// Obtener datos del formulario
+$id_inventario = isset($_POST['id_inventario']) ? $_POST['id_inventario'] : null;
+$categoria = isset($_POST['categoria']) ? $_POST['categoria'] : null;
+$producto = isset($_POST['producto']) ? $_POST['producto'] : null;
+$cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : null;
+$unidad = isset($_POST['unidad']) ? $_POST['unidad'] : null;
+$fecha = isset($_POST['fecha']) ? $_POST['fecha'] : null;
+
+// Validar que todos los campos requeridos están presentes para insertar
+if ($id_inventario && $categoria && $producto && $cantidad && $unidad && $fecha) {
+    // Validar longitud de los campos
+    if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
+        echo json_encode(['success' => false, 'message' => 'La cifra debe tener un máximo de 3 números.']);
+        exit;
+    }
+
+    // Preparar la consulta SQL
+    $sql = "INSERT INTO INVENTARIO (ID_INVENTARIO, CATEGORIA, PRODUCTO, CANTIDAD, UNIDAD, FECHA) VALUES (:id_inventario, :categoria, :producto, :cantidad, :unidad, TO_DATE(:fecha, 'YYYY-MM-DD'))";
+    $stid = oci_parse($conn, $sql);
+
+    // Vincular los parámetros
+    oci_bind_by_name($stid, ':id_inventario', $id_inventario);
+    oci_bind_by_name($stid, ':categoria', $categoria);
+    oci_bind_by_name($stid, ':producto', $producto);
+    oci_bind_by_name($stid, ':cantidad', $cantidad);
+    oci_bind_by_name($stid, ':unidad', $unidad);
+    oci_bind_by_name($stid, ':fecha', $fecha);
+
+    // Ejecutar la consulta
+    if (oci_execute($stid)) {
+        echo json_encode(['success' => true, 'message' => 'Nuevo registro creado exitosamente']);
+    } else {
+        $e = oci_error($stid);
+        echo json_encode(['success' => false, 'message' => 'Error: ' . $e['message']]);
+    }
+    oci_free_statement($stid);
+    oci_close($conn);
+    exit;
+}
+
+// Comprobar si se quiere actualizar un registro
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar_id'])) {
+    $id = $_POST['editar_id'];
+    $cantidad = $_POST['cantidad'];
+    $fecha = $_POST['fecha'];
+
+    // Validar longitud de los campos
+    if (strlen($cantidad) > 3 || !ctype_digit($cantidad)) {
+        echo json_encode(['success' => false, 'message' => 'La cifra debe tener un máximo de 3 números.']);
+        exit;
+    }
+
+    $query = "UPDATE INVENTARIO SET 
+                CANTIDAD = :cantidad,
+                FECHA = TO_DATE(:fecha, 'YYYY-MM-DD')
+              WHERE ID_INVENTARIO = :id";
+
+    $stid = oci_parse($conn, $query);
+    oci_bind_by_name($stid, ':cantidad', $cantidad);
+    oci_bind_by_name($stid, ':fecha', $fecha);
+    oci_bind_by_name($stid, ':id', $id);
+    $result = oci_execute($stid);
+
+    if ($result) {
+        echo json_encode(['success' => true, 'message' => 'Registro actualizado correctamente.']);
+    } else {
+        $e = oci_error($stid);
+        echo json_encode(['success' => false, 'message' => 'Error al actualizar el registro: ' . $e['message']]);
+    }
+
+    oci_free_statement($stid);
+    oci_close($conn);
+    exit;
+}
+
+// Obtener un registro por ID
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $query = 'SELECT ID_INVENTARIO, CATEGORIA, PRODUCTO, CANTIDAD, UNIDAD, TO_CHAR(FECHA, \'YYYY-MM-DD\') AS FECHA FROM INVENTARIO WHERE ID_INVENTARIO = :id';
+    $stid = oci_parse($conn, $query);
+    oci_bind_by_name($stid, ':id', $id);
+    oci_execute($stid);
+
+    if ($row = oci_fetch_assoc($stid)) {
+        echo json_encode($row);
+    } else {
+        echo json_encode(["error" => "No se encontró el registro"]);
+    }
+
+    oci_free_statement($stid);
+    oci_close($conn);
+    exit;
+}
+
+// Si no se envió un POST para eliminar o editar, obtener los datos
+$query = 'SELECT ID_INVENTARIO, CATEGORIA, PRODUCTO, CANTIDAD, UNIDAD, TO_CHAR(FECHA, \'YYYY-MM-DD\') AS FECHA FROM INVENTARIO ORDER BY ID_INVENTARIO';
+$stid = oci_parse($conn, $query);
+oci_execute($stid);
+
+$inventario = [];
+while ($row = oci_fetch_assoc($stid)) {
+    $inventario[] = $row;
+}
+
+oci_free_statement($stid);
 oci_close($conn);
+
+// Respuesta en JSON
+echo json_encode(['data' => $inventario]);
 ?>
